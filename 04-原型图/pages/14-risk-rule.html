@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>风险规则配置 · 井盖风险分级巡检</title>
+<link rel="stylesheet" href="../assets/app.css">
+<style>
+  .content{padding:20px 24px}
+  .split{grid-template-columns:1fr 340px}
+  .wrow{display:grid;grid-template-columns:120px 1fr 64px 92px;gap:12px;align-items:center;padding:11px 0;border-bottom:1px dashed #EDF3EF}
+  .wrow:last-of-type{border-bottom:none}
+  .wrow .n{font-size:13.5px}
+  .wrow .n small{display:block;font-size:11.5px;color:#8A9990}
+  .wrow input[type=range]{width:100%;accent-color:#234E3B}
+  .wrow .val{font-variant-numeric:tabular-nums;font-weight:600;text-align:right;font-size:14px}
+  .wrow .sel{width:88px;height:30px;font-size:12.5px}
+  .total{display:flex;align-items:center;gap:14px;padding:14px 0 0;font-size:13.5px}
+  .total b{font-size:20px;font-variant-numeric:tabular-nums}
+  .thr{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px}
+  .thr .t{border:1px solid #E3EBE6;border-radius:6px;padding:10px 12px}
+  .thr .t .k{font-size:11.5px;color:#8A9990}
+  .thr .t .v{font-size:16px;font-weight:600;font-variant-numeric:tabular-nums}
+  .hist{font-size:12.5px}
+</style>
+</head>
+<body data-role="admin" data-active="风险规则">
+<div class="layout">
+  <div class="main">
+    <div class="content">
+      <div class="pagehead">
+        <div><h1>风险规则配置</h1><p>创新点「井盖风险分级巡检」· 六因子加权 · 权重合计必须等于 100%</p></div>
+        <div class="right"><button class="btn">恢复默认</button><button class="btn primary">保存并发布新版本</button></div>
+      </div>
+
+      <div class="grid split">
+        <div>
+          <div class="card">
+            <div class="card-h"><h3>当前生效版本 v1.3</h3><span class="tag green">启用中</span><span class="muted">生效时间 2026-09-01 00:00 · 发布人 张启明</span></div>
+            <div class="wrow"><div class="n">道路等级<small>主干道 / 次干道 / 支路</small></div><input type="range" min="0" max="40" value="25"><div class="val">25%</div><select class="select sel"><option>高</option><option selected>中</option><option>低</option></select></div>
+            <div class="wrow"><div class="n">缺损严重度<small>轻微 / 一般 / 严重 / 丢失</small></div><input type="range" min="0" max="40" value="25"><div class="val">25%</div><select class="select sel"><option>高</option><option selected>中</option><option>低</option></select></div>
+            <div class="wrow"><div class="n">历史维修次数<small>近 12 个月累计</small></div><input type="range" min="0" max="40" value="15"><div class="val">15%</div><select class="select sel"><option>高</option><option>中</option><option selected>低</option></select></div>
+            <div class="wrow"><div class="n">人流等级<small>密集 / 一般 / 稀疏</small></div><input type="range" min="0" max="40" value="15"><div class="val">15%</div><select class="select sel"><option>高</option><option selected>中</option><option>低</option></select></div>
+            <div class="wrow"><div class="n">未处理时长<small>自上报起按小时折算</small></div><input type="range" min="0" max="40" value="10"><div class="val">10%</div><select class="select sel"><option>高</option><option>中</option><option selected>低</option></select></div>
+            <div class="wrow"><div class="n">重复报修次数<small>近 30 天同点位</small></div><input type="range" min="0" max="40" value="10"><div class="val">10%</div><select class="select sel"><option>高</option><option>中</option><option selected>低</option></select></div>
+            <div class="total"><span>权重合计</span><b style="color:#2F7D55">100%</b><span class="muted">不等于 100% 时禁止发布</span></div>
+          </div>
+
+          <div class="card">
+            <div class="card-h"><h3>分级阈值</h3></div>
+            <div class="thr">
+              <div class="t"><div class="k">一般（蓝）</div><div class="v" style="color:#2C6E8F">0 – 45</div></div>
+              <div class="t"><div class="k">紧急（黄）</div><div class="v" style="color:#B7791F">46 – 70</div></div>
+              <div class="t"><div class="k">重大（红）</div><div class="v" style="color:#A93226">71 – 100</div></div>
+            </div>
+            <div class="hint">阈值可调但必须连续覆盖 0–100，且低级上限小于高级下限。</div>
+            <div class="divider"></div>
+            <div class="sec-title">因子取值规则</div>
+            <div class="tablewrap">
+              <table>
+                <thead><tr><th>因子</th><th>取值来源</th><th>缺失处理</th><th>计分方式</th></tr></thead>
+                <tbody>
+                  <tr><td>道路等级</td><td>井盖档案 road_level</td><td>不参与计算并提示补录</td><td>主干道 25 / 次干道 15 / 支路 8</td></tr>
+                  <tr><td>缺损严重度</td><td>问题记录 damage_type + severity</td><td>不参与计算并提示补录</td><td>丢失 25 / 破损 22 / 沉降 16 / 松动 12 / 异响 8</td></tr>
+                  <tr><td>历史维修次数</td><td>近 12 个月已关闭工单</td><td>按 0 计</td><td>次数 × 4，上限 15</td></tr>
+                  <tr><td>人流等级</td><td>井盖档案 crowd_level</td><td>不参与计算并提示补录</td><td>密集 15 / 一般 9 / 稀疏 4</td></tr>
+                  <tr><td>未处理时长</td><td>当前时间 − 上报时间</td><td>新建时按 0 计</td><td>每满 24h 加 2，上限 10</td></tr>
+                  <tr><td>重复报修次数</td><td>近 30 天同点位问题数</td><td>按 0 计</td><td>次数 × 2，上限 10</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <div class="card-h"><h3>版本历史</h3></div>
+            <div class="timeline hist">
+              <div class="tl-item"><div class="t">v1.3 启用中</div><div class="m">2026-09-01 · 张启明</div><div class="b">道路等级 25%、缺损 25%，阈值调整为 45/70</div></div>
+              <div class="tl-item mute"><div class="t">v1.2 已停用</div><div class="m">2026-06-01 · 张启明</div><div class="b">新增「重复报修次数」因子，权重 10%</div></div>
+              <div class="tl-item mute"><div class="t">v1.1 已停用</div><div class="m">2026-03-15 · 李文博</div><div class="b">未处理时长权重由 5% 提到 10%</div></div>
+              <div class="tl-item mute"><div class="t">v1.0 已归档</div><div class="m">2025-12-01 · 张启明</div><div class="b">初始五因子版本</div></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-h"><h3>规则生效说明</h3></div>
+            <div class="note">修改权重后只影响新计算或主动重新计算的数据，历史结果保留原规则版本与输入快照，不随规则变化而变动。</div>
+            <ul class="list-plain" style="margin-top:10px">
+              <li><span>本月计算次数</span><b>186</b></li>
+              <li><span>使用 v1.3 计算</span><b>142</b></li>
+              <li><span>使用 v1.2 计算</span><b>44</b></li>
+              <li><span>人工调整次数</span><b>9</b></li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-h"><h3>一致性校验</h3></div>
+            <div class="inline"><span class="tag green">同输入同结果</span><span class="tag green">快照留存</span><span class="tag green">版本可追溯</span></div>
+            <div class="hint">相同输入 + 相同规则版本必须得到相同分数，测试数据覆盖 30 条以上。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../assets/icons.js"></script>
+<script src="../assets/shell.js"></script>
+</body>
+</html>

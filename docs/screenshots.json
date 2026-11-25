@@ -1,0 +1,38 @@
+{
+  "shots": [
+    "01_login",
+    "02_admin_dashboard",
+    "03_admin_covers",
+    "04_admin_routes",
+    "05_admin_tasks",
+    "06_admin_issues",
+    "07_admin_orders",
+    "08_admin_acceptances",
+    "09_admin_parts",
+    "10_admin_risk_rule",
+    "11_admin_risk_score",
+    "12_admin_analysis",
+    "13_admin_messages",
+    "14_admin_profile",
+    "15_admin_users",
+    "16_admin_roles",
+    "17_admin_menus",
+    "18_admin_dicts",
+    "19_admin_cover_detail",
+    "20_admin_order_detail",
+    "21_admin_risk_detail",
+    "22_dispatcher_dashboard",
+    "23_dispatcher_orders",
+    "24_inspector_tasks",
+    "25_inspector_report",
+    "26_inspector_messages",
+    "27_repairer_orders",
+    "28_repairer_profile",
+    "login-new"
+  ],
+  "errors": [],
+  "imgStat": {
+    "total": 10,
+    "broken": 0
+  }
+}

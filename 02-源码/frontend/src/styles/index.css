@@ -1,0 +1,144 @@
+/* 全局样式：森林绿业务系统基调，与 design/design-system.md 一致 */
+:root {
+  --brand: #234E3B;
+  --brand-2: #3A7D5A;
+  --brand-3: #315F4C;
+  --bg: #F4F8F5;
+  --surface: #fff;
+  --line: #E3EBE6;
+  --text: #1F2A25;
+  --text-2: #5C6B63;
+  --text-3: #8A9990;
+  --ok: #2F7D55;
+  --warn: #B7791F;
+  --danger: #A93226;
+  --info: #2C6E8F;
+
+  --el-color-primary: #234E3B;
+  --el-color-primary-light-3: #3A7D5A;
+  --el-color-primary-light-5: #6F9C82;
+  --el-color-primary-light-7: #A9C6B6;
+  --el-color-primary-light-8: #C8DCD1;
+  --el-color-primary-light-9: #EAF2ED;
+  --el-color-primary-dark-2: #1B3F2F;
+  --el-color-success: #2F7D55;
+  --el-color-warning: #B7791F;
+  --el-color-danger: #A93226;
+  --el-color-info: #5C6B63;
+  --el-border-radius-base: 6px;
+  --el-border-color-light: #E3EBE6;
+  --el-text-color-primary: #1F2A25;
+  --el-text-color-regular: #5C6B63;
+  --el-font-size-base: 13.5px;
+}
+
+* { box-sizing: border-box; }
+html, body, #app { height: 100%; margin: 0; }
+body {
+  font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 13.5px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--brand-3); text-decoration: none; }
+.num, .mono { font-variant-numeric: tabular-nums; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+.page { padding: 20px 24px; }
+.page-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 14px; }
+.page-head h1 { font-size: 20px; line-height: 30px; font-weight: 600; margin: 0; letter-spacing: .2px; }
+.page-head p { margin: 3px 0 0; font-size: 12.5px; color: var(--text-2); }
+.page-head .right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+
+.card {
+  background: #fff; border: 1px solid var(--line); border-radius: 8px;
+  padding: 16px 18px; margin-bottom: 14px;
+}
+.card-h { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.card-h h3 { font-size: 14.5px; font-weight: 600; margin: 0; }
+.card-h .right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+.muted { color: var(--text-3); font-size: 12.5px; }
+
+.filter-bar { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: flex-end; }
+.filter-bar .item { display: flex; flex-direction: column; gap: 5px; }
+.filter-bar .item label { font-size: 12.5px; color: var(--text-2); }
+.filter-bar .el-input, .filter-bar .el-select { width: 200px; }
+.filter-bar .item.wide .el-input { width: 260px; }
+
+.metrics { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 14px; }
+.metric {
+  background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px;
+  position: relative; overflow: hidden;
+}
+.metric::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--brand); }
+.metric.warn::before { background: var(--warn); }
+.metric.danger::before { background: var(--danger); }
+.metric .k { font-size: 12.5px; color: var(--text-2); }
+.metric .v { font-size: 24px; line-height: 32px; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -.5px; }
+.metric .v small { font-size: 12.5px; font-weight: 400; color: var(--text-3); margin-left: 2px; }
+.metric .d { font-size: 11.5px; color: var(--text-3); }
+
+.chart { width: 100%; height: 220px; }
+.chart-sm { height: 180px; }
+
+.pager { display: flex; justify-content: flex-end; align-items: center; gap: 12px; padding-top: 12px; }
+
+.tag { display: inline-flex; align-items: center; gap: 4px; height: 22px; padding: 0 8px; border-radius: 4px; font-size: 12px; border: 1px solid transparent; white-space: nowrap; }
+.tag-gray { background: #F1F5F2; color: var(--text-2); border-color: #E3EBE6; }
+.tag-green { background: #EAF5EE; color: var(--ok); border-color: #C6E2D1; }
+.tag-blue { background: #EAF2F7; color: var(--info); border-color: #C7DCE8; }
+.tag-amber { background: #FDF4E3; color: var(--warn); border-color: #EFD9AE; }
+.tag-red { background: #FBECEA; color: var(--danger); border-color: #EDC7C2; }
+
+.kv { display: grid; grid-template-columns: 104px 1fr; gap: 9px 12px; font-size: 13px; }
+.kv dt { color: var(--text-2); font-size: 12.5px; }
+.kv dd { margin: 0; color: var(--text); }
+
+.note { background: #F7FAF8; border: 1px solid var(--line); border-left: 3px solid var(--brand-2); border-radius: 0 6px 6px 0; padding: 9px 12px; font-size: 12.5px; color: var(--text-2); }
+.note.warn { background: #FDF8EE; border-left-color: var(--warn); color: #7A4E1C; }
+.note.red { background: #FCF1EF; border-left-color: var(--danger); color: #8A3A31; }
+
+.detail-head { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; margin-bottom: 14px; }
+.detail-head .l1 { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.detail-head .l1 h1 { font-size: 18px; font-weight: 600; margin: 0; }
+.detail-head .l2 { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 10px; font-size: 12.5px; color: var(--text-2); }
+.detail-head .l2 b { color: var(--text); font-weight: 500; margin-left: 4px; }
+
+.el-table th.el-table__cell { background: #F7FAF8 !important; color: var(--text-2); font-weight: 500; font-size: 12.5px; }
+.el-table td.el-table__cell { padding: 8px 0; }
+.el-table .cell { font-size: 13px; }
+.el-table__row:hover > td { background: #F6FBF8 !important; }
+.el-button--primary { --el-button-bg-color: var(--brand); --el-button-border-color: var(--brand); }
+.el-button--primary:hover { --el-button-bg-color: #1B3F2F; --el-button-border-color: #1B3F2F; }
+.el-drawer__header { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.el-dialog { border-radius: 8px; }
+.empty-box { text-align: center; padding: 36px 16px; color: var(--text-3); }
+.thumb { width: 56px; height: 42px; border-radius: 4px; object-fit: cover; border: 1px solid var(--line); display: block; background: #DDE9E1; }
+.nowrap { white-space: nowrap; }
+.steps-mini { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 12px; color: var(--text-3); }
+.steps-mini .s { display: flex; align-items: center; gap: 5px; }
+.steps-mini .s i { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-style: normal; font-size: 10px; background: #EDF3EF; }
+.steps-mini .s.done i { background: var(--ok); color: #fff; }
+.steps-mini .s.cur i { background: var(--brand); color: #fff; }
+.steps-mini .s.cur { color: var(--brand); font-weight: 500; }
+
+/* Element Plus 细节对齐品牌色（复选框、单选、开关、聚焦边框） */
+.el-checkbox__input.is-checked .el-checkbox__inner,
+.el-checkbox__input.is-indeterminate .el-checkbox__inner { background-color: var(--brand); border-color: var(--brand); }
+.el-checkbox__input.is-checked + .el-checkbox__label { color: var(--brand); }
+.el-radio__input.is-checked .el-radio__inner { background: var(--brand); border-color: var(--brand); }
+.el-radio__input.is-checked + .el-radio__label { color: var(--brand); }
+.el-switch.is-checked .el-switch__core { background: var(--brand); border-color: var(--brand); }
+.el-input__wrapper.is-focus { box-shadow: 0 0 0 1px var(--brand) inset; }
+.el-select .el-select__wrapper.is-focused { box-shadow: 0 0 0 1px var(--brand) inset; }
+.el-tabs__item.is-active { color: var(--brand); }
+.el-tabs__active-bar { background-color: var(--brand); }
+
+/* 顶栏用户区：AppLayout 里用 h() 渲染的节点拿不到 scoped 属性，样式必须写在全局 */
+.topbar .avatar { display: flex; align-items: center; gap: 8px; cursor: pointer; color: inherit; }
+.topbar .avatar img { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); background: #E8F0EB; }
+.topbar .avatar span { font-size: 13px; line-height: 15px; white-space: nowrap; }
+.topbar .avatar small { display: block; font-size: 11px; opacity: .7; }
+.topbar.portal .avatar img { border-color: rgba(255, 255, 255, .35); }
+.topbar .bell { display: inline-flex; align-items: center; }

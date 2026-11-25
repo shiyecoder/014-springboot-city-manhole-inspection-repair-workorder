@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>维修派单台 · 调度员</title>
+<link rel="stylesheet" href="../assets/app.css">
+<style>
+  .content{padding:20px 24px}
+  .board{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+  .col{background:#F7FAF8;border:1px solid #E3EBE6;border-radius:8px;padding:12px;min-height:320px}
+  .col .ch{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;margin-bottom:10px}
+  .col .ch b{font-variant-numeric:tabular-nums;background:#fff;border:1px solid #E3EBE6;border-radius:10px;padding:0 7px;font-size:11.5px;font-weight:500;color:#5C6B63}
+  .ticket{background:#fff;border:1px solid #E3EBE6;border-radius:6px;padding:11px 12px;margin-bottom:9px;border-left:3px solid #B7791F}
+  .ticket.red{border-left-color:#A93226}
+  .ticket.blue{border-left-color:#2C6E8F}
+  .ticket .t1{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500}
+  .ticket .t1 span{margin-left:auto;font-size:11px;color:#8A9990;font-weight:400}
+  .ticket .t2{font-size:12px;color:#5C6B63;margin-top:5px;line-height:18px}
+  .ticket .t3{display:flex;align-items:center;gap:6px;margin-top:8px;font-size:11px;color:#8A9990}
+  .ticket.over{background:#FCF1EF;border-color:#EDC7C2}
+  .ticket.over .t1{color:#A93226}
+</style>
+</head>
+<body data-role="dispatcher" data-active="派单工作台">
+<div class="layout">
+  <div class="main">
+    <div class="content">
+      <div class="pagehead">
+        <div><h1>维修派单台</h1><p>按风险等级排序 · 逾期工单自动置顶 · 2026-10-31 20:10 刷新</p></div>
+        <div class="right"><button class="btn">刷新</button><a class="btn primary" href="08-issue-list.html">批量派单</a></div>
+      </div>
+
+      <div class="metrics" style="grid-template-columns:repeat(5,1fr)">
+        <div class="metric danger"><div class="k">待派重大</div><div class="v">4</div><div class="d">最长等待 2 天 3 小时</div></div>
+        <div class="metric warn"><div class="k">待派紧急</div><div class="v">9</div><div class="d">要求 4 小时内到场</div></div>
+        <div class="metric"><div class="k">处理中</div><div class="v">32</div><div class="d">含返工 8</div></div>
+        <div class="metric"><div class="k">待验收</div><div class="v">21</div><div class="d">今日新增 5</div></div>
+        <div class="metric"><div class="k">逾期工单</div><div class="v" style="color:#A93226">3</div><div class="d up">已自动升级提醒</div></div>
+      </div>
+
+      <div class="board">
+        <div class="col">
+          <div class="ch">待派单 <b>13</b></div>
+          <div class="ticket red"><div class="t1">WT-20261031-002<span>07:48</span></div><div class="t2">JHD-0208 · 中山路<br>井盖丢失 · 重大 92</div><div class="t3"><span class="tag red">丢失</span>等待 12 小时</div></div>
+          <div class="ticket red"><div class="t1">WT-20261029-004<span>10-29</span></div><div class="t2">JHD-0142 · 解放东路<br>边角破损 12cm · 重大 86</div><div class="t3"><span class="tag red">破损</span>等待 2 天 11 小时</div></div>
+          <div class="ticket"><div class="t1">WT-20261030-011<span>10-30</span></div><div class="t2">JHD-0117 · 建设南路<br>井周沉降 5cm · 紧急 64</div><div class="t3"><span class="tag amber">沉降</span>等待 1 天</div></div>
+          <div class="ticket blue"><div class="t1">WT-20261030-009<span>10-30</span></div><div class="t2">JHD-0139 · 解放东路<br>井盖松动 · 一般 41</div><div class="t3"><span class="tag blue">松动</span>等待 1 天</div></div>
+        </div>
+        <div class="col">
+          <div class="ch">已派待到场 <b>8</b></div>
+          <div class="ticket over"><div class="t1">GD-20261028-017<span>逾期 3h</span></div><div class="t2">JHD-0094 · 建设南路<br>井盖维修一队 · 赵国强</div><div class="t3"><span class="tag red">超时</span>要求 10-28 15:00 到场</div></div>
+          <div class="ticket"><div class="t1">GD-20261031-006<span>18:20</span></div><div class="t2">JHD-0188 · 中山路<br>排水抢修队 · 钱伟</div><div class="t3"><span class="tag amber">待接单</span>要求 21:00 到场</div></div>
+          <div class="ticket"><div class="t1">GD-20261031-005<span>16:05</span></div><div class="t2">JHD-0161 · 建设南路<br>井盖维修二队 · 孙磊</div><div class="t3"><span class="tag blue">已接单</span>要求 19:00 到场</div></div>
+        </div>
+        <div class="col">
+          <div class="ch">现场维修 <b>24</b></div>
+          <div class="ticket"><div class="t1">GD-20261030-013<span>进行中</span></div><div class="t2">JHD-0138 · 解放东路<br>已围挡 · 更换井圈中</div><div class="t3"><span class="tag amber">已围挡</span>到场 10-30 15:40</div></div>
+          <div class="ticket"><div class="t1">GD-20261031-004<span>进行中</span></div><div class="t2">JHD-0201 · 开发区环路<br>路面恢复中</div><div class="t3"><span class="tag amber">已围挡</span>领用井盖 1 套</div></div>
+          <div class="ticket red"><div class="t1">GD-20261029-008<span>返工</span></div><div class="t2">JHD-0158 · 中山路<br>验收不合格：路面未压实</div><div class="t3"><span class="tag red">返工中</span>第 2 次处理</div></div>
+        </div>
+        <div class="col">
+          <div class="ch">待验收 <b>21</b></div>
+          <div class="ticket"><div class="t1">GD-20261031-007<span>19:30</span></div><div class="t2">JHD-0174 · 解放东路<br>维修完成，待现场复查</div><div class="t3"><span class="tag amber">待验收</span>完工 19:30</div></div>
+          <div class="ticket"><div class="t1">GD-20261031-006<span>18:55</span></div><div class="t2">JHD-0166 · 建设南路<br>更换井盖 + 井圈</div><div class="t3"><span class="tag amber">待验收</span>完工 18:55</div></div>
+          <div class="ticket blue"><div class="t1">GD-20261030-011<span>16:10</span></div><div class="t2">JHD-0142 · 解放东路<br>更换井盖，待编号标识复查</div><div class="t3"><span class="tag blue">待复查</span>完工 16:10</div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><h3>逾期跟踪</h3><span class="muted">3 条工单超过要求到场时间</span><div class="right"><button class="btn sm">发送催办</button></div></div>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th class="nowrap">工单号</th><th class="nowrap">井盖</th><th>队伍</th><th class="nowrap">要求到场</th><th class="nowrap">逾期</th><th>风险等级</th><th class="nowrap">催办次数</th><th class="nowrap">操作</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">GD-20261028-017</td><td class="mono">JHD-0094</td><td>井盖维修一队</td><td class="nowrap">10-28 15:00</td><td class="nowrap" style="color:#A93226;font-weight:600">3 小时 12 分</td><td><span class="tag red">重大</span></td><td class="num">2</td><td class="ops"><a href="#">催办</a><a href="10-order-detail.html">详情</a></td></tr>
+              <tr><td class="mono">GD-20261027-009</td><td class="mono">JHD-0088</td><td>排水抢修队</td><td class="nowrap">10-27 14:00</td><td class="nowrap" style="color:#A93226;font-weight:600">1 天 6 小时</td><td><span class="tag amber">紧急</span></td><td class="num">1</td><td class="ops"><a href="#">催办</a><a href="10-order-detail.html">详情</a></td></tr>
+              <tr><td class="mono">GD-20261026-014</td><td class="mono">JHD-0071</td><td>井盖维修二队</td><td class="nowrap">10-26 17:30</td><td class="nowrap" style="color:#A93226;font-weight:600">5 小时 40 分</td><td><span class="tag blue">一般</span></td><td class="num">0</td><td class="ops"><a href="#">催办</a><a href="10-order-detail.html">详情</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../assets/icons.js"></script>
+<script src="../assets/shell.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>我的工单 · 维修人员</title>
+<link rel="stylesheet" href="../assets/app.css">
+<style>
+  .content{padding:20px 24px}
+  .taskhead{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+  .tcard{background:#fff;border:1px solid #E3EBE6;border-radius:8px;padding:16px 18px}
+  .tcard .k{font-size:12.5px;color:#5C6B63}
+  .tcard .v{font-size:24px;font-weight:600;font-variant-numeric:tabular-nums;line-height:32px}
+  .order{background:#fff;border:1px solid #E3EBE6;border-radius:8px;overflow:hidden;margin-bottom:12px;border-left:4px solid #A93226}
+  .order.warn{border-left-color:#B7791F}
+  .order.ok{border-left-color:#2F7D55}
+  .order .h{display:flex;align-items:center;gap:10px;padding:13px 18px;border-bottom:1px solid #EEF4F0}
+  .order .h b{font-size:15px}
+  .order .h .right{margin-left:auto;display:flex;gap:8px}
+  .order .b{display:grid;grid-template-columns:1fr 240px;gap:16px;padding:14px 18px}
+  .order dl{display:grid;grid-template-columns:96px 1fr;gap:7px 10px;font-size:13px}
+  .order dt{color:#5C6B63;font-size:12.5px}
+  .order img{width:100%;height:120px;object-fit:cover;border-radius:6px;border:1px solid #E3EBE6;background:#DDE9E1}
+  .order .foot{display:flex;gap:8px;padding:0 18px 14px}
+  .chk{display:flex;align-items:center;gap:8px;font-size:13px;color:#5C6B63;margin-top:8px}
+</style>
+</head>
+<body data-role="repairer" data-active="我的工单">
+<div class="layout">
+  <div class="main">
+    <div class="content">
+      <div class="pagehead">
+        <div><h1>我的工单</h1><p>井盖维修一队 · 赵国强 · 待本人处理优先，更新时间倒序</p></div>
+        <div class="right"><button class="btn">全部</button><button class="btn primary">待办</button></div>
+      </div>
+
+      <div class="taskhead">
+        <div class="tcard"><div class="k">待接单</div><div class="v" style="color:#B7791F">2</div><div class="muted">其中重大 1 条</div></div>
+        <div class="tcard"><div class="k">进行中</div><div class="v">3</div><div class="muted">已围挡 2 条</div></div>
+        <div class="tcard"><div class="k">今日完工</div><div class="v" style="color:#2F7D55">4</div><div class="muted">平均用时 1.8 小时</div></div>
+        <div class="tcard"><div class="k">返工</div><div class="v" style="color:#A93226">1</div><div class="muted">验收不合格</div></div>
+      </div>
+
+      <div class="order">
+        <div class="h"><b>GD-20261031-008</b><span class="tag red">重大 92</span><span class="tag amber">待接单</span><span class="muted">要求 21:30 到场</span>
+          <div class="right"><a class="btn" href="10-order-detail.html">详情</a><button class="btn primary">接单</button></div></div>
+        <div class="b">
+          <div>
+            <dl>
+              <dt>井盖</dt><dd class="mono">JHD-0208 · 中山路</dd>
+              <dt>问题</dt><dd>井盖丢失，井口裸露，位于人行横道旁</dd>
+              <dt>派发</dt><dd>李文博 · 2026-10-31 20:05 · 井盖维修一队</dd>
+              <dt>安全措施</dt><dd style="color:#A93226">未登记（重大风险必填临时围挡）</dd>
+            </dl>
+            <div class="chk"><input type="checkbox"> 已到现场并完成临时围挡</div>
+          </div>
+          <img src="../assets/cover-4.jpg" alt="现场" onerror="this.style.background='#DDE9E1'">
+        </div>
+        <div class="foot"><button class="btn">申请延期</button><button class="btn">退回</button></div>
+      </div>
+
+      <div class="order warn">
+        <div class="h"><b>GD-20261030-013</b><span class="tag amber">紧急 64</span><span class="tag blue">维修中</span><span class="muted">已到场 10-30 15:40</span>
+          <div class="right"><a class="btn" href="13-spare-parts.html">领用备件</a><button class="btn primary">提交结果</button></div></div>
+        <div class="b">
+          <div>
+            <dl>
+              <dt>井盖</dt><dd class="mono">JHD-0138 · 解放东路</dd>
+              <dt>问题</dt><dd>井周沉降 4cm，井盖与井圈错位</dd>
+              <dt>已领备件</dt><dd>井圈 Φ700 ×1 · 警示锥 ×2</dd>
+              <dt>安全措施</dt><dd>临时围挡 + 警示锥（10-30 15:42 登记）</dd>
+            </dl>
+            <div class="chk"><input type="checkbox" checked> 已上传维修后照片（1/2）</div>
+          </div>
+          <img src="../assets/cover-5.jpg" alt="现场" onerror="this.style.background='#DDE9E1'">
+        </div>
+        <div class="foot"><button class="btn">登记备件退回</button><button class="btn danger">作废</button></div>
+      </div>
+
+      <div class="order ok">
+        <div class="h"><b>GD-20261029-008</b><span class="tag blue">一般 38</span><span class="tag green">已完工</span><span class="muted">完工 10-29 17:20</span>
+          <div class="right"><a class="btn" href="10-order-detail.html">查看</a></div></div>
+        <div class="b">
+          <div>
+            <dl>
+              <dt>井盖</dt><dd class="mono">JHD-0158 · 中山路</dd>
+              <dt>处理</dt><dd>紧固井圈螺栓，路面找平</dd>
+              <dt>验收</dt><dd>待验收人员复查</dd>
+            </dl>
+          </div>
+          <img src="../assets/cover-6.jpg" alt="现场" onerror="this.style.background='#DDE9E1'">
+        </div>
+      </div>
+
+      <div class="note warn">重大风险工单未登记临时围挡时，「提交结果」按钮不可用，后端同样会拒绝该请求。</div>
+    </div>
+  </div>
+</div>
+<script src="../assets/icons.js"></script>
+<script src="../assets/shell.js"></script>
+</body>
+</html>

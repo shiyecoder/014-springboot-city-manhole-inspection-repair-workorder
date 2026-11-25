@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>验收待办 / 档案 · 验收人员</title>
+<link rel="stylesheet" href="../assets/app.css">
+<style>
+  .content{padding:20px 24px}
+  .split{grid-template-columns:1fr 380px}
+  .chkrow{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px dashed #EDF3EF}
+  .chkrow:last-child{border-bottom:none}
+  .chkrow .cb{width:18px;height:18px;border:1px solid #C9D9CF;border-radius:4px;flex:0 0 18px;margin-top:2px;display:grid;place-items:center;color:#fff;font-size:11px;background:#2F7D55;border-color:#2F7D55}
+  .chkrow .cb.no{background:#A93226;border-color:#A93226}
+  .chkrow .cb.empty{background:#fff;border-color:#C9D9CF;color:transparent}
+  .chkrow .txt b{font-size:13.5px;font-weight:500;display:block}
+  .chkrow .txt small{font-size:12px;color:#8A9990}
+  .cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .cmp figure{font-size:11.5px;color:#8A9990}
+  .cmp img{width:100%;height:150px;object-fit:cover;border-radius:6px;border:1px solid #E3EBE6;background:#DDE9E1;display:block}
+</style>
+</head>
+<body data-role="acceptor" data-active="验收待办">
+<div class="layout">
+  <div class="main">
+    <div class="content">
+      <div class="pagehead">
+        <div><h1>验收待办</h1><p>质量监督组 · 陈默 · 待现场复查 21 条 · 返工跟踪 3 条</p></div>
+        <div class="right"><button class="btn">导出验收台账</button><a class="btn primary" href="15-risk-explain.html">查看风险依据</a></div>
+      </div>
+
+      <div class="grid split">
+        <div>
+          <div class="card">
+            <div class="card-h"><h3>待验收工单</h3><span class="muted">共 21 条</span></div>
+            <div class="chips">
+              <span class="chip active">全部 <b>21</b></span>
+              <span class="chip">今日完工 <b>5</b></span>
+              <span class="chip">超 24 小时 <b>2</b></span>
+              <span class="chip">返工待验 <b>3</b></span>
+            </div>
+            <div class="tablewrap">
+              <table>
+                <thead><tr><th class="nowrap">工单号</th><th class="nowrap">井盖</th><th>道路</th><th>维修内容</th><th>风险等级</th><th class="nowrap">完工时间</th><th>等待</th><th class="nowrap">操作</th></tr></thead>
+                <tbody>
+                  <tr><td class="mono nowrap">GD-20261031-007</td><td class="mono">JHD-0174</td><td>解放东路</td><td>更换井盖 + 井圈</td><td><span class="tag amber">紧急</span></td><td class="nowrap">10-31 19:30</td><td class="nowrap">40 分钟</td><td class="ops"><a href="#">验收</a><a href="10-order-detail.html">详情</a></td></tr>
+                  <tr><td class="mono nowrap">GD-20261031-006</td><td class="mono">JHD-0166</td><td>建设南路</td><td>更换井盖，路面恢复</td><td><span class="tag blue">一般</span></td><td class="nowrap">10-31 18:55</td><td class="nowrap">1 小时</td><td class="ops"><a href="#">验收</a><a href="10-order-detail.html">详情</a></td></tr>
+                  <tr><td class="mono nowrap">GD-20261030-011</td><td class="mono">JHD-0142</td><td>解放东路</td><td>更换井盖，待标识复查</td><td><span class="tag red">重大</span></td><td class="nowrap">10-30 16:10</td><td class="nowrap" style="color:#A93226">28 小时</td><td class="ops"><a href="#">验收</a><a href="10-order-detail.html">详情</a></td></tr>
+                  <tr><td class="mono nowrap">GD-20261029-008</td><td class="mono">JHD-0158</td><td>中山路</td><td>返工：路面重新压实</td><td><span class="tag red">返工</span></td><td class="nowrap">10-31 11:20</td><td class="nowrap">8 小时</td><td class="ops"><a href="#">验收</a><a href="15-risk-explain.html">档案</a></td></tr>
+                  <tr><td class="mono nowrap">GD-20261028-015</td><td class="mono">JHD-0121</td><td>中山路</td><td>紧固螺栓，井周找平</td><td><span class="tag blue">一般</span></td><td class="nowrap">10-28 17:40</td><td class="nowrap" style="color:#A93226">2 天</td><td class="ops"><a href="#">验收</a><a href="10-order-detail.html">详情</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="pager"><span>共 21 条</span><select class="select" style="width:96px;height:30px"><option>10 条/页</option></select><span class="pg">‹</span><span class="pg on">1</span><span class="pg">2</span><span class="pg">3</span><span class="pg">›</span></div>
+          </div>
+
+          <div class="card">
+            <div class="card-h"><h3>返工跟踪</h3><span class="muted">3 条验收不合格</span></div>
+            <div class="tablewrap">
+              <table>
+                <thead><tr><th class="nowrap">工单</th><th>不合格项</th><th class="nowrap">返工次数</th><th>责任队伍</th><th class="nowrap">最近判定</th><th class="nowrap">状态</th></tr></thead>
+                <tbody>
+                  <tr><td class="mono">GD-20261029-008</td><td>路面恢复未压实，存在 1.5cm 高差</td><td class="num">2</td><td>井盖维修一队</td><td class="nowrap">10-30 10:15</td><td><span class="tag red">返工中</span></td></tr>
+                  <tr><td class="mono">GD-20261024-003</td><td>井盖编号标识未喷涂</td><td class="num">1</td><td>井盖维修二队</td><td class="nowrap">10-25 09:30</td><td><span class="tag amber">待复验</span></td></tr>
+                  <tr><td class="mono">GD-20261019-006</td><td>警示围挡撤除不彻底</td><td class="num">1</td><td>排水抢修队</td><td class="nowrap">10-20 16:40</td><td><span class="tag green">已关闭</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><h3>验收单 · GD-20261031-007</h3><span class="tag amber">待验收</span></div>
+          <div class="note" style="margin-bottom:14px">JHD-0174 · 解放东路 · 更换井盖 + 井圈<br>维修人 赵国强 · 完工 10-31 19:30</div>
+          <div class="sec-title">复查项</div>
+          <div class="chkrow"><span class="cb">✓</span><div class="txt"><b>井盖安装平整</b><small>与路面高差 ≤ 5mm，无晃动</small></div></div>
+          <div class="chkrow"><span class="cb">✓</span><div class="txt"><b>路面恢复</b><small>沥青压实，无裂缝与积水</small></div></div>
+          <div class="chkrow"><span class="cb no">✕</span><div class="txt"><b>编号标识</b><small style="color:#A93226">编号 JHD-0174 标识模糊，需重新喷涂</small></div></div>
+          <div class="chkrow"><span class="cb empty">·</span><div class="txt"><b>围挡撤除</b><small>未勾选</small></div></div>
+          <div class="chkrow"><span class="cb empty">·</span><div class="txt"><b>周边清洁</b><small>未勾选</small></div></div>
+          <div class="divider"></div>
+          <div class="sec-title">现场对比</div>
+          <div class="cmp">
+            <figure><img src="../assets/cover-7.jpg" alt="维修前" onerror="this.style.background='#DDE9E1'"><figcaption>维修前</figcaption></figure>
+            <figure><img src="../assets/cover-8.jpg" alt="维修后" onerror="this.style.background='#DDE9E1'"><figcaption>维修后</figcaption></figure>
+          </div>
+          <div class="field" style="margin-top:14px"><label>验收结论</label>
+            <div class="inline"><button class="btn primary sm">合格关闭</button><button class="btn danger sm">判定返工</button></div>
+          </div>
+          <div class="field" style="margin-top:12px"><label>不合格原因（判定返工时必填，≥5 字）</label><textarea class="input" style="width:100%;height:64px;padding:8px 10px" placeholder="如：路面恢复未压实，存在高差"></textarea></div>
+          <div class="hint">验收不合格后工单回到「返工中」，返工次数 +1，并计入返工率统计。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../assets/icons.js"></script>
+<script src="../assets/shell.js"></script>
+</body>
+</html>

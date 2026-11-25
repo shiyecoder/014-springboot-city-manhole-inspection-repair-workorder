@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>风险分级结果解释 · 验收档案</title>
+<link rel="stylesheet" href="../assets/app.css">
+<style>
+  .content{padding:20px 24px}
+  .split{grid-template-columns:1fr 360px}
+  .factor{display:grid;grid-template-columns:150px 1fr 78px;gap:12px;align-items:center;padding:10px 0;border-bottom:1px dashed #EDF3EF}
+  .factor:last-child{border-bottom:none}
+  .factor .n{font-size:13.5px}
+  .factor .n small{display:block;font-size:11.5px;color:#8A9990}
+  .factor .bar{height:10px;border-radius:5px}
+  .factor .s{text-align:right;font-size:13px;font-variant-numeric:tabular-nums;font-weight:600}
+  .scorebox{display:flex;align-items:center;gap:18px;padding:4px 0 10px}
+  .scorebox .big{font-size:44px;line-height:52px;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-1px}
+  .scorebox .lvl{font-size:13px;color:#5C6B63}
+  .scorebox .lvl b{display:block;font-size:17px;color:#A93226;font-weight:600}
+</style>
+</head>
+<body data-role="acceptor" data-active="验收档案">
+<div class="layout">
+  <div class="main">
+    <div class="content">
+      <div class="pagehead">
+        <div><h1>风险分级结果解释 · JHD-0142</h1><p>关联问题 WT-20261029-004 · 规则版本 v1.3 · 计算时间 2026-10-29 09:13:41</p></div>
+        <div class="right"><a class="btn" href="04-cover-detail.html">井盖档案</a><button class="btn">重新计算</button><button class="btn primary">人工修正</button></div>
+      </div>
+
+      <div class="grid split">
+        <div>
+          <div class="card">
+            <div class="card-h"><h3>推荐结果</h3><span class="tag red">重大风险</span><span class="tag gray">未人工调整</span></div>
+            <div class="scorebox">
+              <div><div class="big" style="color:#A93226">86</div></div>
+              <div class="lvl">综合风险分（0–100）<b>重大 · 建议 4 小时内到场</b></div>
+            </div>
+            <div class="riskbar" style="height:12px"><i style="width:24%;background:#2C6E8F"></i><i style="width:38%;background:#B7791F"></i><i style="width:38%;background:#A93226"></i></div>
+            <div class="inline" style="justify-content:space-between;font-size:11px;color:#8A9990;margin-top:2px"><span>一般 0–45</span><span>紧急 46–70</span><span>重大 71–100</span></div>
+            <div class="note red" style="margin-top:12px"><b>主要影响因素：</b>道路等级（主干道，贡献 22 分）与缺损严重度（破损 12cm，贡献 24 分）合计解释 53% 的风险，叠加人流密集与重复报修，建议按重大风险处置。</div>
+          </div>
+
+          <div class="card">
+            <div class="card-h"><h3>六因子明细</h3><span class="muted">权重合计 100%</span></div>
+            <div class="factor"><div class="n">道路等级<small>主干道 · 权重 25%</small></div><div class="bar" style="background:#EDF3EF"><i style="display:block;height:100%;width:88%;background:#234E3B;border-radius:5px"></i></div><div class="s">22 / 25</div></div>
+            <div class="factor"><div class="n">缺损严重度<small>破损 12cm · 权重 25%</small></div><div class="bar" style="background:#EDF3EF"><i style="display:block;height:100%;width:96%;background:#A93226;border-radius:5px"></i></div><div class="s">24 / 25</div></div>
+            <div class="factor"><div class="n">历史维修次数<small>3 次 · 权重 15%</small></div><div class="bar" style="background:#EDF3EF"><i style="display:block;height:100%;width:80%;background:#3A7D5A;border-radius:5px"></i></div><div class="s">12 / 15</div></div>
+            <div class="factor"><div class="n">人流等级<small>密集 · 权重 15%</small></div><div class="bar" style="background:#EDF3EF"><i style="display:block;height:100%;width:93%;background:#315F4C;border-radius:5px"></i></div><div class="s">14 / 15</div></div>
+            <div class="factor"><div class="n">未处理时长<small>48 小时 · 权重 10%</small></div><div class="bar" style="background:#EDF3EF"><i style="display:block;height:100%;width:80%;background:#B7791F;border-radius:5px"></i></div><div class="s">8 / 10</div></div>
+            <div class="factor"><div class="n">重复报修次数<small>2 次 · 权重 10%</small></div><div class="bar" style="background:#EDF3EF"><i style="display:block;height:100%;width:60%;background:#2C6E8F;border-radius:5px"></i></div><div class="s">6 / 10</div></div>
+          </div>
+
+          <div class="card">
+            <div class="card-h"><h3>未满足条件与可改进项</h3></div>
+            <div class="tablewrap">
+              <table>
+                <thead><tr><th>类型</th><th>项目</th><th>说明</th><th class="nowrap">影响</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="tag amber">未满足</span></td><td>未登记临时围挡</td><td>重大风险要求 2 小时内完成围挡，当前已超 3 小时</td><td class="nowrap">阻断提交结果</td></tr>
+                  <tr><td><span class="tag amber">未满足</span></td><td>井盖档案缺安装日期</td><td>影响使用年限判断，建议补录</td><td class="nowrap">不计分</td></tr>
+                  <tr><td><span class="tag blue">可改进</span></td><td>历史维修 3 次</td><td>同一井盖 12 个月内维修 3 次，建议纳入更换计划</td><td class="nowrap">-12 分潜力</td></tr>
+                  <tr><td><span class="tag blue">可改进</span></td><td>重复报修 2 次</td><td>近 30 天同点位重复上报，建议核查井圈基础</td><td class="nowrap">-6 分潜力</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <div class="card-h"><h3>输入快照</h3><span class="muted">可追溯</span></div>
+            <dl class="kv" style="grid-template-columns:96px 1fr;font-size:13px">
+              <dt>规则版本</dt><dd>v1.3（2026-09-01 生效）</dd>
+              <dt>井盖编号</dt><dd class="mono">JHD-0142</dd>
+              <dt>道路等级</dt><dd>主干道</dd>
+              <dt>缺损类型</dt><dd>破损 / 严重度 一般</dd>
+              <dt>历史维修</dt><dd>3 次（近 12 个月）</dd>
+              <dt>人流等级</dt><dd>密集</dd>
+              <dt>上报时间</dt><dd>2026-10-29 09:12</dd>
+              <dt>计算时间</dt><dd>2026-10-29 09:13</dd>
+              <dt>未处理时长</dt><dd>48 小时</dd>
+              <dt>重复报修</dt><dd>2 次（近 30 天）</dd>
+            </dl>
+            <div class="hint">快照随计算结果一起落库，规则后续调整不影响本条记录。</div>
+          </div>
+
+          <div class="card">
+            <div class="card-h"><h3>人工修正</h3><span class="tag gray">未调整</span></div>
+            <div class="field" style="margin-bottom:12px"><label>调整为</label><select class="select" style="width:100%"><option>保持推荐结果</option><option>紧急</option><option>一般</option></select></div>
+            <div class="field" style="margin-bottom:12px"><label>修正原因（≥5 字，必填）</label><textarea class="input" style="width:100%;height:70px;padding:8px 10px" placeholder="如：现场周边为学校，人流超出系统评估"></textarea></div>
+            <button class="btn primary" style="width:100%;justify-content:center">提交修正</button>
+            <div class="note warn" style="margin-top:12px">人工修正只改变最终等级，原始计算分 86 分与分项明细永久保留，不做覆盖。</div>
+          </div>
+
+          <div class="card">
+            <div class="card-h"><h3>修正记录</h3></div>
+            <div class="timeline">
+              <div class="tl-item mute"><div class="t">无人工修正</div><div class="m">系统推荐结果直接采纳</div></div>
+            </div>
+            <div class="divider"></div>
+            <div class="sec-title">采纳情况</div>
+            <ul class="list-plain">
+              <li><span>本月计算</span><b>186 次</b></li>
+              <li><span>推荐采纳</span><b>177 次（95.2%）</b></li>
+              <li><span>人工调整</span><b>9 次（4.8%）</b></li>
+              <li><span>调整后结果</span><b>升级 6 / 降级 3</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../assets/icons.js"></script>
+<script src="../assets/shell.js"></script>
+</body>
+</html>

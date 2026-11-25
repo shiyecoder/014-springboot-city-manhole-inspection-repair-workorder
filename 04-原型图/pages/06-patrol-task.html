@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>我的巡检任务 · 巡检员</title>
+<link rel="stylesheet" href="../assets/app.css">
+<style>
+  .content{padding:20px 24px}
+  .taskhead{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+  .tcard{background:#fff;border:1px solid #E3EBE6;border-radius:8px;padding:16px 18px}
+  .tcard .k{font-size:12.5px;color:#5C6B63}
+  .tcard .v{font-size:24px;font-weight:600;font-variant-numeric:tabular-nums;line-height:32px}
+  .task{background:#fff;border:1px solid #E3EBE6;border-radius:8px;padding:0;margin-bottom:12px;overflow:hidden}
+  .task .h{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid #EEF4F0;background:#F7FAF8}
+  .task .h b{font-size:15px}
+  .task .h .right{margin-left:auto;display:flex;gap:8px;align-items:center}
+  .task .prog{display:flex;align-items:center;gap:10px;padding:12px 18px;border-bottom:1px solid #EEF4F0;font-size:12.5px;color:#5C6B63}
+  .task .prog .bar{flex:1;max-width:420px;height:8px}
+  .point{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid #F1F6F2}
+  .point:last-child{border-bottom:none}
+  .point .no{width:26px;height:26px;border-radius:50%;background:#EDF3EF;color:#5C6B63;display:grid;place-items:center;font-size:12px;font-variant-numeric:tabular-nums;flex:0 0 26px}
+  .point.done .no{background:#2F7D55;color:#fff}
+  .point.cur .no{background:#234E3B;color:#fff}
+  .point .info{flex:1;min-width:0}
+  .point .info b{font-size:13.5px;font-weight:500}
+  .point .info small{display:block;font-size:12px;color:#8A9990;margin-top:1px}
+  .point .acts{display:flex;gap:8px}
+  .bigbtn{height:38px;padding:0 16px;font-size:13.5px}
+</style>
+</head>
+<body data-role="inspector" data-active="我的任务">
+<div class="layout">
+  <div class="main">
+    <div class="content">
+      <div class="pagehead">
+        <div><h1>我的巡检任务</h1><p>2026-10-31 周六 · 第一巡检班组 · 王大海 · 今日 2 条路线待执行</p></div>
+        <div class="right"><a class="btn bigbtn" href="03-cover-list.html">井盖地图</a><a class="btn primary bigbtn" href="07-patrol-report.html">快速上报</a></div>
+      </div>
+
+      <div class="taskhead">
+        <div class="tcard"><div class="k">今日任务</div><div class="v">2</div><div class="muted">待执行 1 · 进行中 1</div></div>
+        <div class="tcard"><div class="k">待检点位</div><div class="v">19</div><div class="muted">已完成 5 / 24</div></div>
+        <div class="tcard"><div class="k">发现异常</div><div class="v" style="color:#B7791F">3</div><div class="muted">重大 1 · 紧急 2</div></div>
+        <div class="tcard"><div class="k">本周完成率</div><div class="v" style="color:#2F7D55">96%</div><div class="muted">逾期 0 条</div></div>
+      </div>
+
+      <div class="task">
+        <div class="h"><b>XJ-20261031-003 · R-03 解放东路东段</b><span class="tag amber">进行中</span><span class="muted">计划 08:00–09:40</span>
+          <div class="right"><a class="btn" href="04-cover-detail.html">查看路线</a><a class="btn primary" href="07-patrol-report.html">继续巡检</a></div></div>
+        <div class="prog"><span>进度 5 / 12</span><div class="bar"><i style="width:42%"></i></div><span>已发现异常 2 处</span></div>
+        <div class="point done"><span class="no">1</span><div class="info"><b>JHD-0142 · 解放东路</b><small>雨水井盖 · 08:06 已登记 · 状态：边角破损 12cm</small></div><div class="acts"><span class="tag amber">已上报</span></div></div>
+        <div class="point done"><span class="no">2</span><div class="info"><b>JHD-0141 · 解放东路</b><small>雨水井盖 · 08:14 已登记 · 状态：完好</small></div><div class="acts"><span class="tag green">完好</span></div></div>
+        <div class="point done"><span class="no">3</span><div class="info"><b>JHD-0139 · 解放东路</b><small>污水井盖 · 08:22 已登记 · 状态：松动</small></div><div class="acts"><span class="tag amber">已上报</span></div></div>
+        <div class="point done"><span class="no">4</span><div class="info"><b>JHD-0138 · 解放东路</b><small>污水井盖 · 08:31 已登记 · 状态：完好</small></div><div class="acts"><span class="tag green">完好</span></div></div>
+        <div class="point done"><span class="no">5</span><div class="info"><b>JHD-0136 · 解放东路</b><small>雨水井盖 · 08:39 已登记 · 状态：完好</small></div><div class="acts"><span class="tag green">完好</span></div></div>
+        <div class="point cur"><span class="no">6</span><div class="info"><b>JHD-0132 · 解放东路</b><small>雨水井盖 · 待检 · 距上一点 180 米</small></div>
+          <div class="acts"><a class="btn sm" href="07-patrol-report.html">登记完好</a><a class="btn sm primary" href="07-patrol-report.html">上报问题</a></div></div>
+        <div class="point"><span class="no">7</span><div class="info"><b>JHD-0129 · 解放东路</b><small>污水井盖 · 待检</small></div><div class="acts"><span class="muted">待检</span></div></div>
+      </div>
+
+      <div class="task">
+        <div class="h"><b>XJ-20261031-005 · R-07 建设南路全线</b><span class="tag blue">待执行</span><span class="muted">计划 14:00–16:10</span>
+          <div class="right"><a class="btn" href="04-cover-detail.html">查看路线</a><a class="btn primary" href="07-patrol-report.html">开始巡检</a></div></div>
+        <div class="prog"><span>进度 0 / 21</span><div class="bar"><i style="width:0%"></i></div><span>共 21 个点位</span></div>
+        <div class="point"><span class="no">1</span><div class="info"><b>JHD-0117 · 建设南路</b><small>燃气井盖 · 上次巡检 2026-10-24 · 曾上报 2 次</small></div><div class="acts"><span class="tag red">重点复核</span></div></div>
+        <div class="point"><span class="no">2</span><div class="info"><b>JHD-0115 · 建设南路</b><small>通信井盖 · 上次巡检 2026-10-24</small></div><div class="acts"><span class="muted">待检</span></div></div>
+      </div>
+
+      <div class="note">巡检完成后系统自动汇总完好/异常数量，异常点位会同步进入调度员的待确认队列。</div>
+    </div>
+  </div>
+</div>
+<script src="../assets/icons.js"></script>
+<script src="../assets/shell.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>城市井盖巡检与维修工单管理系统 · 设计稿索引</title>
+<link rel="stylesheet" href="assets/app.css">
+<style>
+  body{background:#F4F8F5}
+  .hero{background:#234E3B;color:#fff;padding:36px 40px}
+  .hero h1{font-size:24px;font-weight:600;letter-spacing:.5px}
+  .hero p{color:rgba(255,255,255,.7);font-size:13.5px;margin-top:6px}
+  .hero .meta{display:flex;gap:26px;margin-top:18px;font-size:12.5px;color:rgba(255,255,255,.8)}
+  .hero .meta b{display:block;font-size:18px;color:#fff;font-weight:600}
+  .wrap{padding:28px 40px 60px}
+  .roleblock{background:#fff;border:1px solid #E3EBE6;border-radius:8px;margin-bottom:16px;overflow:hidden}
+  .roleblock .rh{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid #E3EBE6;background:#F7FAF8}
+  .roleblock .rh b{font-size:14.5px}
+  .roleblock .rh .swatch{width:10px;height:10px;border-radius:2px}
+  .roleblock .rh .desc{font-size:12.5px;color:#5C6B63}
+  .pages{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;padding:16px 20px}
+  .pages a{display:block;border:1px solid #E3EBE6;border-radius:6px;padding:12px 14px;color:#1F2A25;background:#fff}
+  .pages a:hover{border-color:#3A7D5A;background:#F6FBF8}
+  .pages a b{display:block;font-size:13.5px;font-weight:500}
+  .pages a span{font-size:12px;color:#8A9990}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>城市井盖巡检与维修工单管理系统</h1>
+  <p>设计稿索引 · 编号 NEW-014 · 森林绿专业业务系统风格</p>
+  <div class="meta">
+    <div><b>5</b>角色</div>
+    <div><b>16</b>页面稿</div>
+    <div><b>23</b>数据表</div>
+    <div><b>6</b>风险因子</div>
+    <div><b>8083 / 5173</b>端口</div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="roleblock">
+    <div class="rh"><span class="swatch" style="background:#234E3B"></span><b>管理员</b><span class="desc">后台侧边栏 · 全量主数据与系统配置</span></div>
+    <div class="pages">
+      <a href="pages/02-admin-dashboard.html"><b>工作台</b><span>6 指标 + 6 图表，一屏</span></a>
+      <a href="pages/03-cover-list.html"><b>井盖设施地图</b><span>筛选 + 地图 + 台账</span></a>
+      <a href="pages/04-cover-detail.html"><b>井盖详情</b><span>基础信息 / 过程 / 时间轴</span></a>
+      <a href="pages/05-route-plan.html"><b>巡检路线计划</b><span>路线编排 + 周期生成</span></a>
+      <a href="pages/13-spare-parts.html"><b>备件库存</b><span>库存 / 出入库流水</span></a>
+      <a href="pages/14-risk-rule.html"><b>风险规则配置</b><span>权重版本 + 生效时间</span></a>
+      <a href="pages/16-analysis.html"><b>统计分析</b><span>趋势 / 排行 / 时效</span></a>
+    </div>
+  </div>
+  <div class="roleblock">
+    <div class="rh"><span class="swatch" style="background:#1F4A52"></span><b>调度员</b><span class="desc">后台侧边栏 · 深青区分，派单与逾期跟踪</span></div>
+    <div class="pages">
+      <a href="pages/09-dispatch-board.html"><b>维修派单台</b><span>待派队列 + 派发抽屉</span></a>
+      <a href="pages/08-issue-list.html"><b>问题上报列表</b><span>快速上报 + 去重提示</span></a>
+      <a href="pages/10-order-detail.html"><b>工单详情</b><span>状态流转 + 安全措施</span></a>
+      <a href="pages/15-risk-explain.html"><b>风险分级解释</b><span>推荐结果 + 人工修正</span></a>
+    </div>
+  </div>
+  <div class="roleblock">
+    <div class="rh"><span class="swatch" style="background:#2B5140"></span><b>验收人员</b><span class="desc">后台侧边栏 · 墨绿区分，复查与返工</span></div>
+    <div class="pages">
+      <a href="pages/12-acceptance.html"><b>验收待办 / 档案</b><span>路面恢复 + 标识复查</span></a>
+      <a href="pages/15-risk-explain.html"><b>验收档案页</b><span>风险依据与调整记录</span></a>
+    </div>
+  </div>
+  <div class="roleblock">
+    <div class="rh"><span class="swatch" style="background:#3A7D5A"></span><b>巡检员</b><span class="desc">移动优先门户 · 顶栏导航，大字卡片</span></div>
+    <div class="pages">
+      <a href="pages/06-patrol-task.html"><b>我的巡检任务</b><span>今日路线 + 逐点打卡</span></a>
+      <a href="pages/07-patrol-report.html"><b>巡检上报</b><span>缺损类型 + 现场照片</span></a>
+    </div>
+  </div>
+  <div class="roleblock">
+    <div class="rh"><span class="swatch" style="background:#4A5B3C"></span><b>维修人员</b><span class="desc">移动优先门户 · 深棕绿，接单与围挡</span></div>
+    <div class="pages">
+      <a href="pages/11-my-orders.html"><b>我的工单</b><span>接单 / 围挡 / 上传结果</span></a>
+      <a href="pages/13-spare-parts.html"><b>备件领用</b><span>领用数量 ≤ 可用库存</span></a>
+    </div>
+  </div>
+  <div class="roleblock">
+    <div class="rh"><span class="swatch" style="background:#5C6B63"></span><b>公共</b><span class="desc">登录 / 个人中心</span></div>
+    <div class="pages">
+      <a href="pages/01-login.html"><b>登录页</b><span>品牌侧栏 + 表单</span></a>
+      <a href="pages/17-profile.html"><b>个人中心</b><span>资料 / 密码 / 头像</span></a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

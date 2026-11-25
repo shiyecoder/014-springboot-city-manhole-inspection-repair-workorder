@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>道路风险分析 · 统计分析</title>
+<link rel="stylesheet" href="../assets/app.css">
+<style>
+  .content{padding:18px 24px}
+  .metrics{margin-bottom:12px}
+  .metric{padding:11px 14px}
+  .metric .v{font-size:24px;line-height:30px}
+  .card{padding:16px 18px}
+  .card-h{margin-bottom:8px}
+  .chart{height:186px}
+  .rowa{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px}
+  .rowb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px}
+  .legend{display:flex;gap:12px;font-size:11.5px;color:#5C6B63;flex-wrap:wrap}
+  .legend i{width:7px;height:7px;border-radius:2px;display:inline-block;margin-right:4px}
+</style>
+</head>
+<body data-role="admin" data-active="统计分析">
+<div class="layout">
+  <div class="main">
+    <div class="content">
+      <div class="pagehead">
+        <div><h1>道路风险分析</h1><p>最近 30 天 · 全市 6 个养护片区 · 图表可点击下钻到明细</p></div>
+        <div class="right">
+          <select class="select" style="width:140px"><option>最近 30 天</option><option>本月</option><option>本季度</option><option>本年</option><option>自定义</option></select>
+          <button class="btn">导出</button>
+        </div>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><div class="k">设施总数</div><div class="v">2,486</div><div class="d">覆盖 6 片区</div></div>
+        <div class="metric warn"><div class="k">异常数量</div><div class="v">37</div><div class="d up">环比 +6</div></div>
+        <div class="metric"><div class="k">平均响应时长</div><div class="v">2.4<small>h</small></div><div class="d down">环比 -0.6h</div></div>
+        <div class="metric"><div class="k">维修完成率</div><div class="v">92.8<small>%</small></div><div class="d down">环比 +1.9%</div></div>
+        <div class="metric danger"><div class="k">重复报修率</div><div class="v">8.6<small>%</small></div><div class="d up">环比 +1.2%</div></div>
+        <div class="metric"><div class="k">高风险路段</div><div class="v">5</div><div class="d">重大 2 / 紧急 3</div></div>
+      </div>
+
+      <div class="rowa">
+        <div class="card">
+          <div class="card-h"><h3>问题趋势与处置量</h3><div class="right legend"><span><i style="background:#234E3B"></i>上报</span><span><i style="background:#7FA08F"></i>关闭</span></div></div>
+          <div class="chart">
+            <svg viewBox="0 0 520 186" preserveAspectRatio="none">
+              <g stroke="#EDF2EF"><line x1="34" y1="18" x2="512" y2="18"/><line x1="34" y1="56" x2="512" y2="56"/><line x1="34" y1="94" x2="512" y2="94"/><line x1="34" y1="132" x2="512" y2="132"/><line x1="34" y1="160" x2="512" y2="160"/></g>
+              <polyline points="44,126 92,114 140,118 188,98 236,106 284,84 332,92 380,70 428,76 476,58 512,64" fill="none" stroke="#7FA08F" stroke-width="2" stroke-dasharray="4 3"/>
+              <polyline points="44,114 92,102 140,110 188,86 236,94 284,70 332,80 380,58 428,64 476,44 512,52" fill="none" stroke="#234E3B" stroke-width="2.2"/>
+              <g fill="#234E3B"><circle cx="44" cy="114" r="2.4"/><circle cx="188" cy="86" r="2.4"/><circle cx="332" cy="80" r="2.4"/><circle cx="476" cy="44" r="2.4"/></g>
+              <g font-size="10" fill="#8A9990"><text x="40" y="176">10/1</text><text x="130" y="176">10/8</text><text x="222" y="176">10/15</text><text x="314" y="176">10/22</text><text x="406" y="176">10/29</text><text x="482" y="176">10/31</text></g>
+            </svg>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h3>状态分布</h3></div>
+          <div class="chart" style="display:flex;align-items:center;justify-content:center">
+            <svg viewBox="0 0 180 180" style="width:160px;height:160px">
+              <circle cx="90" cy="90" r="58" fill="none" stroke="#E3EBE6" stroke-width="20"/>
+              <circle cx="90" cy="90" r="58" fill="none" stroke="#234E3B" stroke-width="20" stroke-dasharray="128 237" transform="rotate(-90 90 90)"/>
+              <circle cx="90" cy="90" r="58" fill="none" stroke="#3A7D5A" stroke-width="20" stroke-dasharray="62 303" stroke-dashoffset="-128" transform="rotate(-90 90 90)"/>
+              <circle cx="90" cy="90" r="58" fill="none" stroke="#B7791F" stroke-width="20" stroke-dasharray="40 325" stroke-dashoffset="-190" transform="rotate(-90 90 90)"/>
+              <circle cx="90" cy="90" r="58" fill="none" stroke="#A93226" stroke-width="20" stroke-dasharray="25 340" stroke-dashoffset="-230" transform="rotate(-90 90 90)"/>
+              <text x="90" y="88" text-anchor="middle" font-size="10" fill="#8A9990">在办</text>
+              <text x="90" y="108" text-anchor="middle" font-size="22" font-weight="600" fill="#1F2A25">124</text>
+            </svg>
+          </div>
+          <div class="legend" style="justify-content:center"><span><i style="background:#234E3B"></i>待派单 38</span><span><i style="background:#3A7D5A"></i>维修中 32</span><span><i style="background:#B7791F"></i>待验收 21</span><span><i style="background:#A93226"></i>返工 8</span></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h3>缺损类型分布</h3></div>
+          <div class="chart">
+            <svg viewBox="0 0 240 186">
+              <g font-size="10.5" fill="#5C6B63">
+                <text x="0" y="24">破损</text><rect x="44" y="13" width="150" height="13" rx="3" fill="#234E3B"/><text x="200" y="24" fill="#1F2A25" font-weight="600">96</text>
+                <text x="0" y="52">沉降</text><rect x="44" y="41" width="108" height="13" rx="3" fill="#3A7D5A"/><text x="200" y="52" fill="#1F2A25" font-weight="600">69</text>
+                <text x="0" y="80">松动</text><rect x="44" y="69" width="76" height="13" rx="3" fill="#315F4C"/><text x="200" y="80" fill="#1F2A25" font-weight="600">48</text>
+                <text x="0" y="108">异响</text><rect x="44" y="97" width="48" height="13" rx="3" fill="#7FA08F"/><text x="200" y="108" fill="#1F2A25" font-weight="600">31</text>
+                <text x="0" y="136">丢失</text><rect x="44" y="125" width="26" height="13" rx="3" fill="#A93226"/><text x="200" y="136" fill="#1F2A25" font-weight="600">17</text>
+                <text x="0" y="164">井圈</text><rect x="44" y="153" width="18" height="13" rx="3" fill="#B7791F"/><text x="200" y="164" fill="#1F2A25" font-weight="600">12</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="rowb">
+        <div class="card">
+          <div class="card-h"><h3>责任单位排行</h3><span class="muted">按处置量</span></div>
+          <div class="chart">
+            <svg viewBox="0 0 260 186">
+              <g font-size="10.5" fill="#5C6B63">
+                <text x="0" y="26">市政一处</text><rect x="60" y="15" width="150" height="13" rx="3" fill="#234E3B"/><text x="216" y="26" fill="#1F2A25">96</text>
+                <text x="0" y="56">排水公司</text><rect x="60" y="45" width="118" height="13" rx="3" fill="#3A7D5A"/><text x="216" y="56" fill="#1F2A25">75</text>
+                <text x="0" y="86">市政二处</text><rect x="60" y="75" width="92" height="13" rx="3" fill="#315F4C"/><text x="216" y="86" fill="#1F2A25">59</text>
+                <text x="0" y="116">供电公司</text><rect x="60" y="105" width="54" height="13" rx="3" fill="#7FA08F"/><text x="216" y="116" fill="#1F2A25">34</text>
+                <text x="0" y="146">通信管线</text><rect x="60" y="135" width="38" height="13" rx="3" fill="#B7791F"/><text x="216" y="146" fill="#1F2A25">24</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h3>响应时效对比</h3><span class="muted">小时</span></div>
+          <div class="chart">
+            <svg viewBox="0 0 260 186">
+              <g stroke="#EDF2EF"><line x1="30" y1="20" x2="250" y2="20"/><line x1="30" y1="70" x2="250" y2="70"/><line x1="30" y1="120" x2="250" y2="120"/></g>
+              <g>
+                <rect x="46" y="72" width="26" height="78" rx="3" fill="#234E3B"/><text x="59" y="164" text-anchor="middle" font-size="10" fill="#5C6B63">重大</text><text x="59" y="66" text-anchor="middle" font-size="10.5" fill="#1F2A25">3.6</text>
+                <rect x="94" y="92" width="26" height="58" rx="3" fill="#3A7D5A"/><text x="107" y="164" text-anchor="middle" font-size="10" fill="#5C6B63">紧急</text><text x="107" y="86" text-anchor="middle" font-size="10.5" fill="#1F2A25">2.7</text>
+                <rect x="142" y="112" width="26" height="38" rx="3" fill="#7FA08F"/><text x="155" y="164" text-anchor="middle" font-size="10" fill="#5C6B63">一般</text><text x="155" y="106" text-anchor="middle" font-size="10.5" fill="#1F2A25">1.7</text>
+                <rect x="190" y="104" width="26" height="46" rx="3" fill="#B7791F"/><text x="203" y="164" text-anchor="middle" font-size="10" fill="#5C6B63">返工</text><text x="203" y="98" text-anchor="middle" font-size="10.5" fill="#1F2A25">2.1</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h3>创新模块结果分布</h3><span class="muted">v1.3</span></div>
+          <div class="chart">
+            <svg viewBox="0 0 260 186">
+              <g stroke="#EDF2EF"><line x1="28" y1="20" x2="250" y2="20"/><line x1="28" y1="66" x2="250" y2="66"/><line x1="28" y1="112" x2="250" y2="112"/></g>
+              <g>
+                <rect x="48" y="92" width="38" height="58" rx="3" fill="#2C6E8F"/><text x="67" y="164" text-anchor="middle" font-size="10" fill="#5C6B63">一般</text><text x="67" y="86" text-anchor="middle" font-size="10.5" fill="#1F2A25">62</text>
+                <rect x="110" y="64" width="38" height="86" rx="3" fill="#B7791F"/><text x="129" y="164" text-anchor="middle" font-size="10" fill="#5C6B63">紧急</text><text x="129" y="58" text-anchor="middle" font-size="10.5" fill="#1F2A25">88</text>
+                <rect x="172" y="120" width="38" height="30" rx="3" fill="#A93226"/><text x="191" y="164" text-anchor="middle" font-size="10" fill="#5C6B63">重大</text><text x="191" y="114" text-anchor="middle" font-size="10.5" fill="#1F2A25">36</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="hint" style="margin-top:10px">图表数值与列表总数一致：一般 62 + 紧急 88 + 重大 36 = 186 次计算。点击任一图例可跳转带筛选条件的明细列表。</div>
+    </div>
+  </div>
+</div>
+<script src="../assets/icons.js"></script>
+<script src="../assets/shell.js"></script>
+</body>
+</html>

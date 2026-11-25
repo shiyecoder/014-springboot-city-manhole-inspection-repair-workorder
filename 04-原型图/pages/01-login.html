@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>登录 · 城市井盖巡检与维修工单管理系统</title>
+<link rel="stylesheet" href="../assets/app.css">
+<style>
+  .login{display:grid;grid-template-columns:480px 1fr;min-height:100vh}
+  .lside{background:#234E3B;color:#fff;padding:56px 48px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+  .lside:before{content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle at 1px 1px, rgba(255,255,255,.14) 1px, transparent 0);
+    background-size:26px 26px;opacity:.55}
+  .lside:after{content:"";position:absolute;right:-120px;bottom:-140px;width:420px;height:420px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.14);box-shadow:0 0 0 40px rgba(255,255,255,.04),0 0 0 90px rgba(255,255,255,.03)}
+  .lside .top{position:relative;display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;letter-spacing:.4px}
+  .lside .top svg{width:26px;height:26px}
+  .lside .mid{position:relative;margin-top:auto;margin-bottom:auto}
+  .lside h1{font-size:30px;line-height:44px;font-weight:600;letter-spacing:1px}
+  .lside h1 em{font-style:normal;display:block;color:#9FD3B4}
+  .lside p{margin-top:18px;font-size:13.5px;line-height:26px;color:rgba(255,255,255,.72);max-width:330px}
+  .lside .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:26px}
+  .lside .tags span{font-size:12px;padding:4px 10px;border:1px solid rgba(255,255,255,.22);border-radius:3px;color:rgba(255,255,255,.85)}
+  .lside .foot{position:relative;font-size:11.5px;color:rgba(255,255,255,.4);line-height:20px}
+  .rside{display:flex;align-items:center;justify-content:center;padding:40px;background:#F4F8F5}
+  .lform{width:368px;background:#fff;border:1px solid #E3EBE6;border-radius:10px;padding:36px 34px 30px}
+  .lform h2{font-size:21px;font-weight:600;letter-spacing:.5px}
+  .lform .sub{font-size:12.5px;color:#8A9990;margin-top:6px;margin-bottom:26px}
+  .lform .fld{margin-bottom:16px}
+  .lform label{display:block;font-size:12.5px;color:#5C6B63;margin-bottom:6px}
+  .lform .input{width:100%;height:40px}
+  .roles{display:flex;gap:6px;margin-bottom:22px;flex-wrap:wrap}
+  .roles button{flex:1 1 30%;height:32px;font-size:12.5px;border:1px solid #E3EBE6;background:#fff;border-radius:5px;color:#5C6B63;cursor:pointer;font-family:inherit}
+  .roles button.on{border-color:#234E3B;background:#EDF4EF;color:#234E3B;font-weight:500}
+  .lform .row{display:flex;align-items:center;justify-content:space-between;font-size:12.5px;color:#5C6B63;margin-bottom:20px}
+  .lform .btn{width:100%;height:42px;justify-content:center;font-size:14.5px;letter-spacing:2px}
+  .lform .err{display:none;background:#FBECEA;border:1px solid #EDC7C2;color:#A93226;font-size:12.5px;padding:7px 10px;border-radius:5px;margin-bottom:14px}
+  .lform .tip{margin-top:18px;font-size:11.5px;color:#8A9990;text-align:center;line-height:19px}
+  .captcha{display:flex;gap:8px}
+  .captcha .input{flex:1}
+  .captcha i{width:96px;height:40px;border:1px solid #E3EBE6;border-radius:6px;display:grid;place-items:center;font-style:normal;
+    font-family:ui-monospace,monospace;font-size:17px;letter-spacing:3px;color:#315F4C;background:#F1F6F2;text-decoration:line-through;user-select:none}
+</style>
+</head>
+<body>
+<div class="login">
+  <div class="lside">
+    <div class="top">
+      <svg><use href="#i-cover"></use></svg>
+      城市井盖巡检与维修工单管理系统
+    </div>
+    <div class="mid">
+      <h1>一盖一档<em>巡·派·修·验 全流程闭环</em></h1>
+      <p>覆盖井盖台账、巡检路线、问题上报、维修派单、现场验收与备件领用。风险分级巡检支持规则配置、计算留痕与人工修正。</p>
+      <div class="tags"><span>巡检路线</span><span>风险分级</span><span>维修工单</span><span>备件管控</span><span>验收归档</span></div>
+    </div>
+    <div class="foot">市政设施管理科 · 养护调度中心<br>内部系统，请勿外传</div>
+  </div>
+  <div class="rside">
+    <form class="lform" onsubmit="return false">
+      <h2>账号登录</h2>
+      <div class="sub">请使用单位分配的账号登录，连续 5 次失败将锁定 15 分钟</div>
+      <div class="roles">
+        <button type="button" class="on">管理员</button>
+        <button type="button">调度员</button>
+        <button type="button">巡检员</button>
+        <button type="button">维修人员</button>
+        <button type="button">验收人员</button>
+      </div>
+      <div class="err">用户名或密码错误，今日还可尝试 4 次</div>
+      <div class="fld">
+        <label>用户名</label>
+        <input class="input" value="admin" autocomplete="username">
+      </div>
+      <div class="fld">
+        <label>密码</label>
+        <input class="input" type="password" value="admin123" autocomplete="current-password">
+      </div>
+      <div class="fld">
+        <label>验证码</label>
+        <div class="captcha">
+          <input class="input" placeholder="请输入右侧 4 位字符">
+          <i>7K2M</i>
+        </div>
+      </div>
+      <div class="row">
+        <label style="display:flex;align-items:center;gap:6px;margin:0"><input type="checkbox" checked> 记住用户名</label>
+        <a href="#">忘记密码？</a>
+      </div>
+      <a class="btn primary" href="02-admin-dashboard.html">登 录</a>
+      <div class="tip">测试账号：admin / admin123<br>其余角色账号见启动文档</div>
+    </form>
+  </div>
+</div>
+<script src="../assets/icons.js"></script>
+</body>
+</html>

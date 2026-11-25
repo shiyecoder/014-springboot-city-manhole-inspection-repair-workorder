@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>井盖详情 · JHD-0142</title>
+<link rel="stylesheet" href="../assets/app.css">
+<style>
+  .content{padding:20px 24px}
+  .split{grid-template-columns:1fr 336px}
+  .photo{width:100%;height:170px;border-radius:6px;background:#DDE9E1;border:1px solid #E3EBE6;object-fit:cover;display:block}
+  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .gallery figure{font-size:11.5px;color:#8A9990}
+</style>
+</head>
+<body data-role="admin" data-active="井盖台账">
+<div class="layout">
+  <div class="main">
+    <div class="content">
+      <div class="detail-head">
+        <div class="l1">
+          <h1>JHD-0142</h1>
+          <span class="tag red"><span class="dotspan"></span>重大风险</span>
+          <span class="tag amber">待派单</span>
+          <span class="tag gray">雨水井盖</span>
+          <span class="grow" style="flex:1"></span>
+          <a class="btn" href="03-cover-list.html">返回列表</a>
+          <a class="btn" href="16-analysis.html">风险解释</a>
+          <a class="btn primary" href="08-issue-list.html">登记问题</a>
+        </div>
+        <div class="l2">
+          <span>责任人 <b>王大海</b></span>
+          <span>权属单位 <b>市政一处</b></span>
+          <span>所在道路 <b>解放东路</b></span>
+          <span>创建时间 <b>2019-06-12 09:24:11</b></span>
+          <span>最近更新 <b>2026-10-29 09:12:38</b></span>
+        </div>
+      </div>
+
+      <div class="grid split">
+        <div>
+          <div class="card">
+            <div class="card-h"><h3>基础信息</h3><div class="right"><a class="btn sm" href="#">编辑</a></div></div>
+            <dl class="kv">
+              <dt>井盖编号</dt><dd class="mono">JHD-0142</dd>
+              <dt>设施类型</dt><dd>雨水井盖（Φ700 重型 · 球墨铸铁）</dd>
+              <dt>道路名称</dt><dd>解放东路（城市主干道 · 人流密集）</dd>
+              <dt>坐标位置</dt><dd class="mono">118.3721, 31.2418</dd>
+              <dt>位置描述</dt><dd>解放东路与中山路交叉口东 35 米，非机动车道内侧</dd>
+              <dt>权属单位</dt><dd>市政一处</dd>
+              <dt>安装日期</dt><dd>2019-06-12</dd>
+              <dt>负责人</dt><dd>王大海（第一巡检班组）</dd>
+              <dt>设施状态</dt><dd><span class="tag amber">待派单</span></dd>
+              <dt>历史维修</dt><dd>3 次 · 最近 2026-06-18（更换井圈）</dd>
+            </dl>
+            <div class="divider"></div>
+            <div class="sec-title">现场照片</div>
+            <div class="gallery">
+              <figure><img class="photo" src="../assets/cover-1.jpg" alt="井盖现场图" onerror="this.style.background='#DDE9E1'"><figcaption>2026-10-29 巡检 · 边角破损</figcaption></figure>
+              <figure><img class="photo" src="../assets/cover-7.jpg" alt="维修前" onerror="this.style.background='#DDE9E1'"><figcaption>2026-06-18 维修前记录</figcaption></figure>
+            </div>
+            <div class="hint">图片均通过上传组件保存至项目 uploads 目录，页面不回显外部链接。</div>
+          </div>
+
+          <div class="card">
+            <div class="card-h"><h3>关联单据</h3></div>
+            <div class="tablewrap">
+              <table>
+                <thead><tr><th class="nowrap">类型</th><th class="nowrap">单号</th><th>摘要</th><th class="nowrap">负责人</th><th>状态</th><th class="nowrap">时间</th></tr></thead>
+                <tbody>
+                  <tr><td>问题</td><td class="mono">WT-20261029-004</td><td>井盖边角破损 12cm，伴随轻微沉降</td><td>王大海</td><td><span class="tag amber">待派单</span></td><td class="nowrap">2026-10-29 09:12</td></tr>
+                  <tr><td>工单</td><td class="mono">GD-20260618-011</td><td>更换井圈，路面恢复 0.6 ㎡</td><td>赵国强</td><td><span class="tag green">已关闭</span></td><td class="nowrap">2026-06-18 10:40</td></tr>
+                  <tr><td>巡检</td><td class="mono">XJ-20260615-002</td><td>路线 R-03 第 7 点位，状态正常</td><td>王大海</td><td><span class="tag green">已完成</span></td><td class="nowrap">2026-06-15 08:50</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <div class="card-h"><h3>风险分级</h3><a class="btn ghost sm" href="15-risk-explain.html">依据 ›</a></div>
+            <div class="inline" style="justify-content:space-between"><span class="muted">当前总分</span><b style="font-size:26px;color:#A93226;font-variant-numeric:tabular-nums">86</b></div>
+            <div class="riskbar"><i style="width:24%;background:#2C6E8F"></i><i style="width:38%;background:#B7791F"></i><i style="width:38%;background:#A93226"></i></div>
+            <div class="inline" style="justify-content:space-between;font-size:11px;color:#8A9990"><span>一般 0–45</span><span>紧急 46–70</span><span>重大 71–100</span></div>
+            <ul class="list-plain" style="margin-top:12px">
+              <li><span>道路等级（主干道）</span><b>22 / 25</b></li>
+              <li><span>缺损严重度（破损）</span><b>24 / 25</b></li>
+              <li><span>历史维修次数（3 次）</span><b>12 / 15</b></li>
+              <li><span>人流等级（密集）</span><b>14 / 15</b></li>
+              <li><span>未处理时长（2 天）</span><b>8 / 10</b></li>
+              <li><span>重复报修次数（2 次）</span><b>6 / 10</b></li>
+            </ul>
+            <div class="note warn" style="margin-top:10px">规则 v1.3 · 计算于 2026-10-29 09:13 · 未人工调整</div>
+          </div>
+
+          <div class="card">
+            <div class="card-h"><h3>操作时间轴</h3></div>
+            <div class="timeline">
+              <div class="tl-item"><div class="t">登记问题</div><div class="m">王大海 · 2026-10-29 09:12</div><div class="b">巡检发现井盖边角破损 12cm，风险升级为重大</div></div>
+              <div class="tl-item mute"><div class="t">风险分级计算</div><div class="m">系统 · 2026-10-29 09:13</div><div class="b">规则 v1.3 得分 86，等级 重大</div></div>
+              <div class="tl-item mute"><div class="t">完成巡检任务</div><div class="m">王大海 · 2026-10-29 10:02</div><div class="b">路线 R-03 第 7/12 点位</div></div>
+              <div class="tl-item mute"><div class="t">更换井圈</div><div class="m">赵国强 · 2026-06-18 10:40</div><div class="b">工单 GD-20260618-011 关闭，领用井圈 1 套</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../assets/icons.js"></script>
+<script src="../assets/shell.js"></script>
+</body>
+</html>

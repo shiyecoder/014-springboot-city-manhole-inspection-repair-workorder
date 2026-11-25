@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>巡检路线计划</title>
+<link rel="stylesheet" href="../assets/app.css">
+<style>.content{padding:20px 24px}.routecard{display:grid;grid-template-columns:1fr 1fr;gap:14px}</style>
+</head>
+<body data-role="admin" data-active="巡检路线">
+<div class="layout">
+  <div class="main">
+    <div class="content">
+      <div class="pagehead">
+        <div><h1>巡检路线计划</h1><p>按道路组合井盖为路线，按周期批量生成巡检任务</p></div>
+        <div class="right"><button class="btn">批量生成任务</button><a class="btn primary" href="#">新建路线</a></div>
+      </div>
+
+      <div class="card" style="padding:16px 20px;margin-bottom:14px">
+        <div class="filter">
+          <div class="field"><label>路线名称</label><input class="input" placeholder="如 解放东路东段"></div>
+          <div class="field"><label>所属班组</label><select class="select"><option>全部</option><option>第一巡检班组</option><option>第二巡检班组</option><option>夜巡班组</option></select></div>
+          <div class="field"><label>巡检周期</label><select class="select"><option>全部</option><option>每日</option><option>每周</option><option>每半月</option><option>每月</option></select></div>
+          <div class="field"><label>状态</label><select class="select"><option>全部</option><option>启用</option><option>停用</option></select></div>
+          <div class="field"><label>&nbsp;</label><div class="inline"><button class="btn primary">查询</button><button class="btn">重置</button></div></div>
+        </div>
+      </div>
+
+      <div class="routecard">
+        <div class="card">
+          <div class="card-h"><h3>R-03 解放东路东段</h3><span class="tag green">启用</span><div class="right"><a class="btn sm" href="06-patrol-task.html">查看任务</a><a class="btn sm" href="#">编辑</a></div></div>
+          <dl class="kv" style="grid-template-columns:96px 1fr">
+            <dt>所属班组</dt><dd>第一巡检班组</dd>
+            <dt>覆盖道路</dt><dd>解放东路（中山路口—建设路口）</dd>
+            <dt>井盖数量</dt><dd>12 座 <span class="muted">（雨水 8 / 污水 4）</span></dd>
+            <dt>巡检周期</dt><dd>每周一、周四 08:00</dd>
+            <dt>负责巡检员</dt><dd>王大海 · 刘敏</dd>
+            <dt>预计用时</dt><dd>95 分钟 · 步行 2.4 km</dd>
+          </dl>
+          <div class="divider"></div>
+          <div class="sec-title">点位顺序</div>
+          <div class="inline" style="gap:6px">
+            <span class="tag gray">1 JHD-0142</span><span class="tag gray">2 JHD-0141</span><span class="tag gray">3 JHD-0139</span>
+            <span class="tag gray">4 JHD-0138</span><span class="tag gray">5 JHD-0136</span><span class="tag gray">…</span><span class="tag gray">12 JHD-0128</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-h"><h3>R-05 中山路北段</h3><span class="tag green">启用</span><div class="right"><a class="btn sm" href="06-patrol-task.html">查看任务</a><a class="btn sm" href="#">编辑</a></div></div>
+          <dl class="kv" style="grid-template-columns:96px 1fr">
+            <dt>所属班组</dt><dd>第二巡检班组</dd>
+            <dt>覆盖道路</dt><dd>中山路（环城北路口—解放路口）</dd>
+            <dt>井盖数量</dt><dd>18 座 <span class="muted">（给水 6 / 电力 7 / 通信 5）</span></dd>
+            <dt>巡检周期</dt><dd>每周二 08:30</dd>
+            <dt>负责巡检员</dt><dd>陈立</dd>
+            <dt>预计用时</dt><dd>130 分钟 · 步行 3.1 km</dd>
+          </dl>
+          <div class="divider"></div>
+          <div class="sec-title">点位顺序</div>
+          <div class="inline" style="gap:6px">
+            <span class="tag gray">1 JHD-0124</span><span class="tag gray">2 JHD-0123</span><span class="tag gray">3 JHD-0121</span>
+            <span class="tag gray">4 JHD-0119</span><span class="tag gray">…</span><span class="tag gray">18 JHD-0106</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><h3>路线列表</h3><span class="muted">共 9 条 · 覆盖 186 座井盖</span></div>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th class="nowrap">路线编号</th><th>路线名称</th><th>覆盖道路</th><th class="nowrap">井盖数</th><th class="nowrap">周期</th><th>班组</th><th>巡检员</th><th>状态</th><th class="nowrap">上次生成</th><th class="nowrap">操作</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">R-01</td><td>解放东路西段</td><td>解放东路</td><td class="num">14</td><td>每日</td><td>第一巡检班组</td><td>刘敏</td><td><span class="tag green">启用</span></td><td class="nowrap">2026-10-31 06:00</td><td class="ops"><a href="06-patrol-task.html">任务</a><a href="#">编辑</a><a href="#">更多</a></td></tr>
+              <tr><td class="mono">R-03</td><td>解放东路东段</td><td>解放东路</td><td class="num">12</td><td>每周一/四</td><td>第一巡检班组</td><td>王大海</td><td><span class="tag green">启用</span></td><td class="nowrap">2026-10-31 06:00</td><td class="ops"><a href="06-patrol-task.html">任务</a><a href="#">编辑</a><a href="#">更多</a></td></tr>
+              <tr><td class="mono">R-05</td><td>中山路北段</td><td>中山路</td><td class="num">18</td><td>每周二</td><td>第二巡检班组</td><td>陈立</td><td><span class="tag green">启用</span></td><td class="nowrap">2026-10-29 06:00</td><td class="ops"><a href="06-patrol-task.html">任务</a><a href="#">编辑</a><a href="#">更多</a></td></tr>
+              <tr><td class="mono">R-07</td><td>建设南路全线</td><td>建设南路</td><td class="num">21</td><td>每周三</td><td>第二巡检班组</td><td>周翔</td><td><span class="tag green">启用</span></td><td class="nowrap">2026-10-30 06:00</td><td class="ops"><a href="06-patrol-task.html">任务</a><a href="#">编辑</a><a href="#">更多</a></td></tr>
+              <tr><td class="mono">R-09</td><td>开发区环路</td><td>环城北路</td><td class="num">9</td><td>每半月</td><td>夜巡班组</td><td>孙磊</td><td><span class="tag gray">停用</span></td><td class="nowrap">2026-10-15 06:00</td><td class="ops"><a href="#">任务</a><a href="#">编辑</a><a href="#">更多</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pager"><span>共 9 条</span><select class="select" style="width:96px;height:30px"><option>10 条/页</option></select><span class="pg">‹</span><span class="pg on">1</span><span class="pg">›</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../assets/icons.js"></script>
+<script src="../assets/shell.js"></script>
+</body>
+</html>

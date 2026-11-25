@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>井盖设施地图 · 台账</title>
+<link rel="stylesheet" href="../assets/app.css">
+<style>
+  .content{padding:20px 24px}
+  .sum{display:flex;gap:24px;background:#fff;border:1px solid #E3EBE6;border-radius:8px;padding:12px 20px;margin-bottom:14px}
+  .sum div{font-size:12.5px;color:#5C6B63}
+  .sum b{display:block;font-size:19px;color:#1F2A25;font-variant-numeric:tabular-nums;line-height:26px}
+  .sum .sep{width:1px;background:#E3EBE6}
+  .maprow{display:grid;grid-template-columns:1fr 300px;gap:14px;margin-bottom:14px}
+  .maplist{max-height:300px;overflow:auto}
+  .mapbox .grid{position:absolute;inset:0;background-image:linear-gradient(#DFEAE3 1px,transparent 1px),linear-gradient(90deg,#DFEAE3 1px,transparent 1px);background-size:34px 34px;opacity:.6}
+  .mapbox .water{position:absolute;left:0;right:0;bottom:0;height:74px;background:#DCE9EF}
+</style>
+</head>
+<body data-role="admin" data-active="井盖台账">
+<div class="layout">
+  <div class="main">
+    <div class="content">
+      <div class="pagehead">
+        <div><h1>井盖设施地图</h1><p>一盖一档 · 按道路、类型、权属、风险与巡检记录检索</p></div>
+        <div class="right">
+          <a class="btn" href="05-route-plan.html">按路线查看</a>
+          <a class="btn primary" href="04-cover-detail.html">新增井盖</a>
+        </div>
+      </div>
+
+      <div class="card" style="padding:16px 20px;margin-bottom:14px">
+        <div class="filter">
+          <div class="field"><label>道路名称</label><input class="input" placeholder="如 解放东路"></div>
+          <div class="field"><label>设施类型</label><select class="select"><option>全部</option><option>雨水井盖</option><option>污水井盖</option><option>给水井盖</option><option>燃气井盖</option><option>电力井盖</option><option>通信井盖</option></select></div>
+          <div class="field"><label>权属单位</label><select class="select"><option>全部</option><option>市政一处</option><option>市政二处</option><option>排水公司</option><option>供电公司</option><option>通信管线</option></select></div>
+          <div class="field"><label>风险等级</label><select class="select"><option>全部</option><option>重大</option><option>紧急</option><option>一般</option></select></div>
+          <div class="field"><label>巡检日期</label><input class="input" type="date" value="2026-10-01"></div>
+          <div class="field"><label>维修状态</label><select class="select"><option>全部</option><option>正常</option><option>待派单</option><option>维修中</option><option>待验收</option></select></div>
+          <div class="field"><label>&nbsp;</label><div class="inline"><button class="btn primary">查询</button><button class="btn">重置</button><button class="btn ghost">高级筛选 ›</button></div></div>
+        </div>
+      </div>
+
+      <div class="sum">
+        <div><b>2,486</b>设施总数</div><div class="sep"></div>
+        <div><b>37</b>当前异常</div><div class="sep"></div>
+        <div><b>24</b>重大风险</div><div class="sep"></div>
+        <div><b>18</b>本月新增</div><div class="sep"></div>
+        <div><b>96.2%</b>巡检覆盖率</div><div class="sep"></div>
+        <div><b>6</b>养护片区</div>
+      </div>
+
+      <div class="maprow">
+        <div class="mapbox">
+          <div class="grid"></div>
+          <div class="water"></div>
+          <div class="road" style="left:0;right:0;top:96px;height:12px"></div>
+          <div class="road" style="left:0;right:0;top:198px;height:8px"></div>
+          <div class="road" style="top:0;bottom:0;left:150px;width:10px"></div>
+          <div class="road" style="top:0;bottom:0;left:430px;width:8px"></div>
+          <div class="lbl" style="left:8px;top:82px">解放东路</div>
+          <div class="lbl" style="left:8px;top:210px">建设南路</div>
+          <div class="lbl" style="left:132px;top:6px">中山路</div>
+          <div class="pin" style="left:180px;top:120px"><b style="background:#A93226"><span>重</span></b><span style="margin-top:2px;background:#fff;padding:0 4px;border-radius:2px">JHD-0142</span></div>
+          <div class="pin" style="left:300px;top:112px"><b style="background:#B7791F"><span>急</span></b></div>
+          <div class="pin" style="left:360px;top:96px"><b style="background:#2C6E8F"><span>一</span></b></div>
+          <div class="pin" style="left:150px;top:220px"><b style="background:#B7791F"><span>急</span></b></div>
+          <div class="pin" style="left:470px;top:230px"><b style="background:#2C6E8F"><span>一</span></b></div>
+          <div class="pin" style="left:520px;top:300px"><b style="background:#A93226"><span>重</span></b></div>
+          <div style="position:absolute;left:12px;bottom:10px;background:#fff;border:1px solid #E3EBE6;border-radius:5px;padding:6px 10px;font-size:11px;color:#5C6B63;display:flex;gap:12px">
+            <span><i style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#A93226"></i> 重大</span>
+            <span><i style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#B7791F"></i> 紧急</span>
+            <span><i style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#2C6E8F"></i> 一般</span>
+            <span style="color:#8A9990">示意点位，不用于导航</span>
+          </div>
+        </div>
+        <div class="card maplist" style="padding:14px 16px">
+          <div class="card-h"><h3>当前视野内点位</h3><span class="muted">6 座</span></div>
+          <ul class="list-plain">
+            <li><span>JHD-0142 · 解放东路</span><b style="color:#A93226">重大 86</b></li>
+            <li><span>JHD-0138 · 解放东路</span><b style="color:#B7791F">紧急 64</b></li>
+            <li><span>JHD-0121 · 中山路</span><b style="color:#2C6E8F">一般 38</b></li>
+            <li><span>JHD-0117 · 建设南路</span><b style="color:#B7791F">紧急 58</b></li>
+            <li><span>JHD-0106 · 中山路</span><b style="color:#2C6E8F">一般 24</b></li>
+            <li><span>JHD-0094 · 建设南路</span><b style="color:#A93226">重大 79</b></li>
+          </ul>
+          <div class="note" style="margin-top:12px">点击地图点位或右侧列表，可展开该井盖的巡检与维修历史。</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h">
+          <h3>井盖台账</h3>
+          <span class="muted">共 2,486 条 · 当前筛选 128 条</span>
+          <div class="right"><button class="btn sm">导出当前筛选</button><button class="btn sm">批量指派负责人</button></div>
+        </div>
+        <div class="chips">
+          <span class="chip active">全部 <b>128</b></span>
+          <span class="chip">正常 <b>91</b></span>
+          <span class="chip">异常 <b>37</b></span>
+          <span class="chip">本月未巡检 <b>9</b></span>
+          <span class="chip">高风险路段 <b>5</b></span>
+        </div>
+        <div class="tablewrap">
+          <table>
+            <thead>
+              <tr>
+                <th class="nowrap">井盖编号</th>
+                <th>设施类型</th>
+                <th>道路</th>
+                <th class="nowrap">坐标</th>
+                <th>权属单位</th>
+                <th class="nowrap">规格</th>
+                <th class="nowrap">安装日期</th>
+                <th>负责人</th>
+                <th>风险等级</th>
+                <th>设施状态</th>
+                <th class="nowrap">最近巡检</th>
+                <th class="nowrap">操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="nowrap"><div class="rowtitle"><img class="cover-thumb" src="../assets/cover-1.jpg" alt="" onerror="this.style.background='#DDE9E1'"><b>JHD-0142</b></div></td>
+                <td>雨水井盖</td><td>解放东路</td>
+                <td class="nowrap mono">118.3721, 31.2418</td>
+                <td>市政一处</td><td class="nowrap">Φ700 重型</td><td class="nowrap">2019-06-12</td>
+                <td>王大海</td>
+                <td><span class="tag red"><span class="dotspan"></span>重大</span></td>
+                <td><span class="tag amber">待派单</span></td>
+                <td class="nowrap">2026-10-29 09:12</td>
+                <td class="ops"><a href="04-cover-detail.html">查看</a><a href="08-issue-list.html">上报</a><a href="#">更多</a></td>
+              </tr>
+              <tr>
+                <td class="nowrap"><div class="rowtitle"><img class="cover-thumb" src="../assets/cover-2.jpg" alt="" onerror="this.style.background='#DDE9E1'"><b>JHD-0138</b></div></td>
+                <td>污水井盖</td><td>解放东路</td>
+                <td class="nowrap mono">118.3715, 31.2409</td>
+                <td>排水公司</td><td class="nowrap">Φ700 重型</td><td class="nowrap">2018-11-03</td>
+                <td>刘敏</td>
+                <td><span class="tag amber"><span class="dotspan"></span>紧急</span></td>
+                <td><span class="tag blue">维修中</span></td>
+                <td class="nowrap">2026-10-30 15:40</td>
+                <td class="ops"><a href="04-cover-detail.html">查看</a><a href="10-order-detail.html">工单</a><a href="#">更多</a></td>
+              </tr>
+              <tr>
+                <td class="nowrap"><div class="rowtitle"><img class="cover-thumb" src="../assets/cover-3.jpg" alt="" onerror="this.style.background='#DDE9E1'"><b>JHD-0121</b></div></td>
+                <td>给水井盖</td><td>中山路</td>
+                <td class="nowrap mono">118.3690, 31.2451</td>
+                <td>市政二处</td><td class="nowrap">Φ600 轻型</td><td class="nowrap">2021-03-25</td>
+                <td>陈立</td>
+                <td><span class="tag blue"><span class="dotspan"></span>一般</span></td>
+                <td><span class="tag green">正常</span></td>
+                <td class="nowrap">2026-10-28 10:05</td>
+                <td class="ops"><a href="04-cover-detail.html">查看</a><a href="#">编辑</a><a href="#">更多</a></td>
+              </tr>
+              <tr>
+                <td class="nowrap"><div class="rowtitle"><img class="cover-thumb" src="../assets/cover-4.jpg" alt="" onerror="this.style.background='#DDE9E1'"><b>JHD-0117</b></div></td>
+                <td>燃气井盖</td><td>建设南路</td>
+                <td class="nowrap mono">118.3652, 31.2388</td>
+                <td>燃气公司</td><td class="nowrap">Φ700 重型</td><td class="nowrap">2017-09-18</td>
+                <td>周翔</td>
+                <td><span class="tag amber"><span class="dotspan"></span>紧急</span></td>
+                <td><span class="tag amber">待验收</span></td>
+                <td class="nowrap">2026-10-31 08:22</td>
+                <td class="ops"><a href="12-acceptance.html">验收</a><a href="10-order-detail.html">工单</a><a href="#">更多</a></td>
+              </tr>
+              <tr>
+                <td class="nowrap"><div class="rowtitle"><img class="cover-thumb" src="../assets/cover-5.jpg" alt="" onerror="this.style.background='#DDE9E1'"><b>JHD-0106</b></div></td>
+                <td>电力井盖</td><td>中山路</td>
+                <td class="nowrap mono">118.3688, 31.2470</td>
+                <td>供电公司</td><td class="nowrap">Φ800 重型</td><td class="nowrap">2016-05-30</td>
+                <td>孙磊</td>
+                <td><span class="tag blue"><span class="dotspan"></span>一般</span></td>
+                <td><span class="tag green">正常</span></td>
+                <td class="nowrap">2026-10-27 14:33</td>
+                <td class="ops"><a href="04-cover-detail.html">查看</a><a href="#">编辑</a><a href="#">更多</a></td>
+              </tr>
+              <tr>
+                <td class="nowrap"><div class="rowtitle"><img class="cover-thumb" src="../assets/cover-6.jpg" alt="" onerror="this.style.background='#DDE9E1'"><b>JHD-0094</b></div></td>
+                <td>通信井盖</td><td>建设南路</td>
+                <td class="nowrap mono">118.3641, 31.2371</td>
+                <td>通信管线</td><td class="nowrap">Φ600 轻型</td><td class="nowrap">2020-12-07</td>
+                <td>王大海</td>
+                <td><span class="tag red"><span class="dotspan"></span>重大</span></td>
+                <td><span class="tag red">已关闭</span></td>
+                <td class="nowrap">2026-10-26 16:48</td>
+                <td class="ops"><a href="04-cover-detail.html">查看</a><a href="08-issue-list.html">新建问题</a><a href="#">更多</a></td>
+              </tr>
+              <tr>
+                <td class="nowrap"><div class="rowtitle"><img class="cover-thumb" src="../assets/cover-1.jpg" alt="" onerror="this.style.background='#DDE9E1'"><b>JHD-0087</b></div></td>
+                <td>雨水井盖</td><td>解放东路</td>
+                <td class="nowrap mono">118.3702, 31.2430</td>
+                <td>市政一处</td><td class="nowrap">Φ700 重型</td><td class="nowrap">2022-08-14</td>
+                <td>刘敏</td>
+                <td><span class="tag blue"><span class="dotspan"></span>一般</span></td>
+                <td><span class="tag green">正常</span></td>
+                <td class="nowrap">2026-10-25 09:30</td>
+                <td class="ops"><a href="04-cover-detail.html">查看</a><a href="#">编辑</a><a href="#">更多</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pager">
+          <span>共 128 条</span>
+          <select class="select" style="width:96px;height:30px"><option>10 条/页</option><option>20 条/页</option><option>50 条/页</option></select>
+          <span class="pg">‹</span><span class="pg on">1</span><span class="pg">2</span><span class="pg">3</span><span class="pg">…</span><span class="pg">13</span><span class="pg">›</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../assets/icons.js"></script>
+<script src="../assets/shell.js"></script>
+</body>
+</html>

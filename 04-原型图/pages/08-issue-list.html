@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>问题上报列表 · 调度员</title>
+<link rel="stylesheet" href="../assets/app.css">
+<style>
+  .content{padding:20px 24px}
+  .dup{background:#FDF8EE;border:1px solid #EFD9AE;border-radius:6px;padding:10px 14px;font-size:12.5px;color:#7A4E1C;margin-bottom:14px;display:flex;gap:10px;align-items:center}
+  .dup b{color:#B7791F}
+  .drawer{position:fixed;right:0;top:0;bottom:0;width:420px;background:#fff;border-left:1px solid #E3EBE6;box-shadow:0 8px 24px rgba(31,42,37,.12);padding:0;display:flex;flex-direction:column;z-index:40}
+  .drawer .dh{padding:16px 20px;border-bottom:1px solid #E3EBE6;display:flex;align-items:center;gap:10px}
+  .drawer .dh b{font-size:15px}
+  .drawer .db{padding:18px 20px;overflow:auto;flex:1}
+  .drawer .df{padding:12px 20px;border-top:1px solid #E3EBE6;display:flex;gap:8px;justify-content:flex-end;background:#FAFCFB}
+  .scrim{position:fixed;inset:0;background:rgba(20,32,26,.32);z-index:30}
+</style>
+</head>
+<body data-role="dispatcher" data-active="待派问题">
+<div class="layout">
+  <div class="main">
+    <div class="content" style="padding-right:450px">
+      <div class="pagehead">
+        <div><h1>问题上报</h1><p>巡检发现与人工上报统一入池 · 待确认后进入派单</p></div>
+        <div class="right"><button class="btn">导出当前筛选</button><a class="btn primary" href="#">快速上报</a></div>
+      </div>
+
+      <div class="card" style="padding:16px 20px;margin-bottom:14px">
+        <div class="filter">
+          <div class="field"><label>问题编号</label><input class="input" placeholder="如 WT-20261029"></div>
+          <div class="field"><label>井盖编号</label><input class="input" placeholder="JHD-"></div>
+          <div class="field"><label>缺损类型</label><select class="select"><option>全部</option><option>破损</option><option>松动</option><option>丢失</option><option>沉降</option><option>异响</option></select></div>
+          <div class="field"><label>风险等级</label><select class="select"><option>全部</option><option>重大</option><option>紧急</option><option>一般</option></select></div>
+          <div class="field"><label>上报时间</label><input class="input" type="date" value="2026-10-01"></div>
+          <div class="field"><label>&nbsp;</label><div class="inline"><button class="btn primary">查询</button><button class="btn">重置</button></div></div>
+        </div>
+      </div>
+
+      <div class="dup"><span>⚠</span><div>检测到 <b>2 组疑似重复上报</b>：同一井盖 24 小时内重复登记。后端已按「井盖编号 + 坐标 50 米内 + 未关闭状态」拦截部分请求，剩余 2 组需人工合并。<a href="#">查看详情</a></div></div>
+
+      <div class="card">
+        <div class="card-h"><h3>问题列表</h3><span class="muted">共 37 条待处理</span>
+          <div class="right"><button class="btn sm">批量确认</button><button class="btn sm primary">批量派单</button></div></div>
+        <div class="chips">
+          <span class="chip active">全部 <b>37</b></span>
+          <span class="chip">待确认 <b>9</b></span>
+          <span class="chip">待派单 <b>14</b></span>
+          <span class="chip">处理中 <b>8</b></span>
+          <span class="chip">待验收 <b>6</b></span>
+        </div>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th style="width:34px"><input type="checkbox"></th><th class="nowrap">问题编号</th><th class="nowrap">井盖</th><th>道路</th><th>缺损类型</th><th>风险等级</th><th>来源</th><th class="nowrap">上报人</th><th class="nowrap">上报时间</th><th>状态</th><th class="nowrap">操作</th></tr></thead>
+            <tbody>
+              <tr><td><input type="checkbox" checked></td><td class="mono nowrap">WT-20261029-004</td><td class="mono nowrap">JHD-0142</td><td>解放东路</td><td>破损</td><td><span class="tag red">重大 86</span></td><td>巡检发现</td><td>王大海</td><td class="nowrap">10-29 09:12</td><td><span class="tag amber">待派单</span></td><td class="ops"><a href="#">派单</a><a href="10-order-detail.html">详情</a></td></tr>
+              <tr><td><input type="checkbox" checked></td><td class="mono nowrap">WT-20261030-011</td><td class="mono nowrap">JHD-0117</td><td>建设南路</td><td>沉降</td><td><span class="tag amber">紧急 64</span></td><td>巡检发现</td><td>周翔</td><td class="nowrap">10-30 08:22</td><td><span class="tag amber">待派单</span></td><td class="ops"><a href="#">派单</a><a href="10-order-detail.html">详情</a></td></tr>
+              <tr><td><input type="checkbox"></td><td class="mono nowrap">WT-20261030-009</td><td class="mono nowrap">JHD-0139</td><td>解放东路</td><td>松动</td><td><span class="tag blue">一般 41</span></td><td>巡检发现</td><td>王大海</td><td class="nowrap">10-30 08:22</td><td><span class="tag gray">待确认</span></td><td class="ops"><a href="#">确认</a><a href="15-risk-explain.html">依据</a></td></tr>
+              <tr><td><input type="checkbox"></td><td class="mono nowrap">WT-20261031-002</td><td class="mono nowrap">JHD-0208</td><td>中山路</td><td>丢失</td><td><span class="tag red">重大 92</span></td><td>人工上报</td><td>陈立</td><td class="nowrap">10-31 07:48</td><td><span class="tag amber">待派单</span></td><td class="ops"><a href="#">派单</a><a href="10-order-detail.html">详情</a></td></tr>
+              <tr><td><input type="checkbox"></td><td class="mono nowrap">WT-20261028-017</td><td class="mono nowrap">JHD-0094</td><td>建设南路</td><td>破损</td><td><span class="tag red">重大 79</span></td><td>市民热线</td><td>调度中心</td><td class="nowrap">10-28 16:05</td><td><span class="tag blue">处理中</span></td><td class="ops"><a href="#">跟踪</a><a href="10-order-detail.html">详情</a></td></tr>
+              <tr><td><input type="checkbox"></td><td class="mono nowrap">WT-20261027-006</td><td class="mono nowrap">JHD-0121</td><td>中山路</td><td>异响</td><td><span class="tag blue">一般 33</span></td><td>巡检发现</td><td>陈立</td><td class="nowrap">10-27 10:05</td><td><span class="tag green">待验收</span></td><td class="ops"><a href="12-acceptance.html">验收</a><a href="10-order-detail.html">详情</a></td></tr>
+              <tr><td><input type="checkbox"></td><td class="mono nowrap">WT-20261026-003</td><td class="mono nowrap">JHD-0106</td><td>中山路</td><td>松动</td><td><span class="tag blue">一般 28</span></td><td>巡检发现</td><td>孙磊</td><td class="nowrap">10-26 14:33</td><td><span class="tag green">已关闭</span></td><td class="ops"><a href="#">归档</a><a href="10-order-detail.html">详情</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pager"><span>共 37 条</span><select class="select" style="width:96px;height:30px"><option>10 条/页</option><option>20 条/页</option><option>50 条/页</option></select><span class="pg">‹</span><span class="pg on">1</span><span class="pg">2</span><span class="pg">3</span><span class="pg">4</span><span class="pg">›</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="scrim"></div>
+<aside class="drawer">
+  <div class="dh"><b>派发维修工单</b><span class="tag red">重大 86</span><span style="flex:1"></span><a href="#" style="font-size:20px;line-height:1;color:#8A9990">×</a></div>
+  <div class="db">
+    <div class="note" style="margin-bottom:16px">WT-20261029-004 · JHD-0142 解放东路 · 破损 12cm<br>上报人 王大海 · 2026-10-29 09:12</div>
+    <div class="frow" style="display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:center;margin-bottom:14px"><label style="text-align:right;font-size:13px;color:#5C6B63">维修队伍</label><select class="select" style="width:100%"><option>井盖维修一队</option><option>井盖维修二队</option><option>排水抢修队</option></select></div>
+    <div class="frow" style="display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:center;margin-bottom:14px"><label style="text-align:right;font-size:13px;color:#5C6B63">维修人员</label><select class="select" style="width:100%"><option>赵国强</option><option>钱伟</option><option>孙磊</option></select></div>
+    <div class="frow" style="display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:center;margin-bottom:14px"><label style="text-align:right;font-size:13px;color:#5C6B63">要求到场</label><input class="input" type="datetime-local" value="2026-10-29T11:00" style="width:100%"></div>
+    <div class="frow" style="display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:start;margin-bottom:14px"><label style="text-align:right;font-size:13px;color:#5C6B63;padding-top:8px">安全措施</label><div style="width:100%"><div class="radios" style="gap:6px"><label class="on">临时围挡</label><label>警示锥</label><label>反光标识</label><label>夜间警示灯</label></div><div class="hint" style="color:#A93226">重大问题必须登记临时围挡，否则维修结果无法提交</div></div></div>
+    <div class="frow" style="display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:start;margin-bottom:14px"><label style="text-align:right;font-size:13px;color:#5C6B63;padding-top:8px">处理方案</label><textarea class="input" style="width:100%;height:76px;padding:8px 10px">更换同规格井盖 1 套，修复井圈基础，路面恢复约 0.6 ㎡。</textarea></div>
+    <div class="frow" style="display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:center"><label style="text-align:right;font-size:13px;color:#5C6B63">预估备件</label><div class="inline"><span class="tag gray">井盖 Φ700 重型 ×1</span><span class="tag gray">井圈 ×1</span><span class="tag gray">警示锥 ×2</span></div></div>
+  </div>
+  <div class="df"><button class="btn">取消</button><button class="btn primary">确认派发</button></div>
+</aside>
+<script src="../assets/icons.js"></script>
+<script src="../assets/shell.js"></script>
+</body>
+</html>
